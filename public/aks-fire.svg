@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  <rect width="640" height="360" rx="16" fill="#1e293b"/>
+  <!-- title -->
+  <text x="320" y="38" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="21" font-weight="bold" fill="#f8fafc">Stabiel hoor... maar de rekening en het onderhoud!</text>
+  <!-- ground / slope -->
+  <path d="M0 320 L180 320 L640 122 L640 360 L0 360Z" fill="#334155"/>
+  <!-- stable AKS rack -->
+  <rect x="40" y="190" width="110" height="130" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="3"/>
+  <g fill="#1e293b">
+    <rect x="50" y="202" width="90" height="30" rx="4"/>
+    <rect x="50" y="242" width="90" height="30" rx="4"/>
+    <rect x="50" y="282" width="90" height="30" rx="4"/>
+  </g>
+  <g fill="#22c55e">
+    <circle cx="64" cy="217" r="5"/><circle cx="64" cy="257" r="5"/><circle cx="64" cy="297" r="5"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="12" fill="#94a3b8">
+    <text x="78" y="221">node 1</text><text x="78" y="261">node 2</text><text x="78" y="301">node 3</text>
+  </g>
+  <text x="95" y="180" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="15" font-weight="bold" fill="#22c55e">AKS: rock solid</text>
+  <!-- money flying away -->
+  <g font-family="Comic Sans MS, Arial, sans-serif" font-weight="bold" font-size="20">
+    <g transform="translate(70 120) rotate(-15)"><rect x="-26" y="-14" width="52" height="28" rx="4" fill="#22c55e"/><text text-anchor="middle" y="7" fill="#052e16">€</text></g>
+    <g transform="translate(150 90) rotate(10)"><rect x="-26" y="-14" width="52" height="28" rx="4" fill="#22c55e"/><text text-anchor="middle" y="7" fill="#052e16">€</text></g>
+    <g transform="translate(230 70) rotate(-8)"><rect x="-26" y="-14" width="52" height="28" rx="4" fill="#22c55e"/><text text-anchor="middle" y="7" fill="#052e16">€</text></g>
+  </g>
+  <g stroke="#94a3b8" stroke-width="3" stroke-linecap="round" opacity="0.7">
+    <path d="M100 130 L118 112"/><path d="M180 100 L198 84"/><path d="M262 78 L282 66"/>
+  </g>
+  <text x="95" y="150" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="13" fill="#cbd5e1">nodes draaien 24/7</text>
+  <!-- boulder: cluster migratie -->
+  <circle cx="400" cy="170" r="50" fill="#64748b" stroke="#94a3b8" stroke-width="4"/>
+  <g font-family="Comic Sans MS, Arial, sans-serif" font-weight="bold" font-size="16" fill="#f8fafc" text-anchor="middle">
+    <text x="400" y="165">Cluster</text>
+    <text x="400" y="185">upgrade</text>
+  </g>
+  <!-- stick figure pushing -->
+  <g stroke="#f8fafc" stroke-width="5" stroke-linecap="round" fill="none">
+    <circle cx="340" cy="184" r="12" fill="#1e293b"/>
+    <path d="M334 196 L322 230"/>
+    <path d="M336 202 L352 186"/>
+    <path d="M322 230 L304 262"/>
+    <path d="M322 230 L338 256"/>
+  </g>
+  <!-- sweat -->
+  <path d="M322 170 q-4 8 0 10 q4 -2 0 -10z" fill="#38bdf8"/>
+  <path d="M318 186 q-4 8 0 10 q4 -2 0 -10z" fill="#38bdf8"/>
+  <!-- caption -->
+  <text x="320" y="347" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="15" fill="#cbd5e1">"Het draait prima, maar elke upgrade is een berg werk."</text>
+</svg>
