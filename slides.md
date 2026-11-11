@@ -586,3 +586,51 @@ Heen en weer: Niet alles kan in code. Het VNet, de service principal (met JIT Ow
 <!--
 Spiekbrief om terug te kijken tijdens de Q&A.
 -->
+
+---
+layout: center
+class: text-center
+---
+
+# Logging en monitoring
+
+<!--
+Volgend probleem: hoe kom je erachter wat je apps doen?
+-->
+
+---
+
+# Log Analytics en log stream: pijnlijk
+
+<div class="w-3/5">
+
+- Log Analytics: KQL leren, en logs verschijnen met vertraging
+- Log stream: alleen live, geen historie, geen zoeken
+- Logs, traces en metrics zitten op verschillende plekken
+
+</div>
+
+<img src="/mon-pijn.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+De ingebouwde Azure-oplossing werkte voor ons niet prettig. Log Analytics vraagt KQL-kennis en heeft ingestie-vertraging, de log stream is live-only. Voor een Java-developer die snel een fout wil zoeken is dat te omslachtig.
+-->
+
+---
+
+# Ons alternatief: Grafana-stack
+
+<div class="w-2/5 text-base">
+
+- **Alloy**: collector, ontvangt OpenTelemetry en scrapet `/q/metrics`
+- **Loki**: logs, **Tempo**: traces, **Mimir**: metrics
+- **Grafana**: dashboards en zoeken op één plek
+- Alles draait zelf als container app in dezelfde environment, data in Blob Storage (31 dagen)
+
+</div>
+
+<img src="/mon-stack.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
+
+<!--
+Wij hosten Grafana, Loki, Tempo en Mimir zelf als container apps via Terraform (monitoring.tf). De Quarkus-apps sturen via de Quarkus OpenTelemetry-extensie logs en traces naar Alloy (http://alloy). Alloy routeert traces naar Tempo en logs naar Loki, en scrapet de Quarkus-metrics elke 30 seconden naar Mimir. Opslag is Azure Blob Storage met 31 dagen retentie. Er staat een Quarkus-dashboard klaar in Grafana. Let op: de OTEL-variabelen staan in de terraform bij sommige services nog uitgecommentarieerd tot de dependencies kloppen.
+-->
