@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" font-family="Segoe UI, Arial, sans-serif"><rect width="400" height="260" rx="14" fill="#000" stroke="#334155" stroke-width="2"/><text x="200" y="32" text-anchor="middle" font-size="16" font-weight="bold" fill="#e2e8f0">Wanneer betaal je?</text>
+<text x="20" y="82" font-size="13" fill="#94a3b8">AKS</text>
+<rect x="60" y="66" width="320" height="22" rx="4" fill="#ef4444"/>
+<text x="220" y="82" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">nodes draaien 24/7</text>
+<text x="20" y="142" font-size="13" fill="#94a3b8">ACA</text>
+<rect x="60" y="126" width="320" height="22" rx="4" fill="#0f172a" stroke="#334155"/>
+<rect x="100" y="126" width="50" height="22" rx="4" fill="#22c55e"/>
+<rect x="210" y="126" width="30" height="22" rx="4" fill="#22c55e"/>
+<rect x="300" y="126" width="64" height="22" rx="4" fill="#22c55e"/>
+<g font-size="12" fill="#86efac" text-anchor="middle"><text x="125" y="168">€</text><text x="225" y="168">€</text><text x="332" y="168">€</text></g>
+<text x="200" y="206" text-anchor="middle" font-size="14" fill="#e2e8f0">Alleen betalen voor groen</text>
+<text x="200" y="228" text-anchor="middle" font-size="12" fill="#94a3b8">CPU + geheugen, per seconde</text></svg>

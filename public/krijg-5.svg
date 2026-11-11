@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" font-family="Segoe UI, Arial, sans-serif"><rect width="400" height="260" rx="14" fill="#000" stroke="#334155" stroke-width="2"/><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#e2e8f0"/></marker></defs><path d="M110 30 L190 52 V120 Q190 170 110 200 Q30 170 30 120 V52z" transform="translate(30 0)" fill="#0f172a" stroke="#22c55e" stroke-width="4"/>
+<path d="M112 120 l22 24 l44 -50" fill="none" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="140" y="228" text-anchor="middle" font-size="14" font-weight="bold" fill="#86efac">Beveiligd door Azure</text>
+<g transform="translate(250 40)"><circle cx="20" cy="20" r="16" fill="none" stroke="#facc15" stroke-width="6"/><path d="M34 26 L100 26 M80 26 v14 M96 26 v10" stroke="#facc15" stroke-width="6" stroke-linecap="round"/></g>
+<text x="300" y="108" text-anchor="middle" font-size="13" fill="#fde68a">managed identity</text>
+<text x="300" y="124" text-anchor="middle" font-size="11" fill="#94a3b8">toegang zonder wachtwoorden</text>
+<rect x="240" y="150" width="120" height="56" rx="10" fill="#0ea5e9"/>
+<text x="300" y="176" text-anchor="middle" font-size="20" font-weight="bold" fill="#fff">99,95%</text>
+<text x="300" y="196" text-anchor="middle" font-size="13" fill="#e0f2fe">SLA</text></svg>

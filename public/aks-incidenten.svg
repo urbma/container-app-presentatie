@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260"><rect width="400" height="260" rx="14" fill="#000" stroke="#334155" stroke-width="2"/>
+<g font-family="Comic Sans MS, Arial, sans-serif">
+<!-- window with moon -->
+<rect x="296" y="22" width="84" height="80" rx="6" fill="#0f172a" stroke="#475569" stroke-width="4"/>
+<path d="M338 22 V102 M296 62 H380" stroke="#475569" stroke-width="3"/>
+<path d="M322 36 a12 12 0 1 0 12 17 a9 9 0 1 1 -12 -17z" fill="#fde68a"/>
+<circle cx="360" cy="80" r="1.5" fill="#f8fafc"/><circle cx="352" cy="40" r="1.5" fill="#f8fafc"/>
+<!-- bed -->
+<rect x="20" y="96" width="14" height="124" rx="4" fill="#78350f"/>
+<rect x="20" y="168" width="250" height="52" rx="6" fill="#1e3a8a"/>
+<rect x="20" y="160" width="250" height="16" rx="6" fill="#2563eb"/>
+<rect x="256" y="190" width="14" height="40" rx="3" fill="#78350f"/><rect x="24" y="214" width="10" height="16" fill="#78350f"/>
+<!-- pillow -->
+<rect x="38" y="118" width="46" height="34" rx="12" fill="#e2e8f0"/>
+<!-- man sitting up -->
+<g stroke="#f8fafc" stroke-width="5" stroke-linecap="round" fill="none">
+<circle cx="120" cy="104" r="16" fill="#000"/>
+<path d="M118 120 V166"/>
+<path d="M118 132 L150 150"/>
+<path d="M118 132 L92 152"/>
+</g>
+<!-- grumpy face -->
+<path d="M110 96 l10 5 M130 96 l-10 5" stroke="#ef4444" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="113" cy="105" r="2.2" fill="#f8fafc"/><circle cx="127" cy="105" r="2.2" fill="#f8fafc"/>
+<path d="M112 116 q8 -7 16 0" fill="none" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/>
+<g stroke="#ef4444" stroke-width="3" stroke-linecap="round"><path d="M100 82 l-5 -8 M120 78 v-10 M140 82 l5 -8"/></g>
+<!-- nightstand + phone -->
+<rect x="282" y="176" width="100" height="56" rx="6" fill="#334155"/>
+<g transform="translate(308 126) rotate(-8)"><rect width="52" height="84" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="3"/><text x="26" y="24" text-anchor="middle" font-size="12" font-weight="bold" fill="#f8fafc">03:07</text><rect x="6" y="32" width="40" height="42" rx="4" fill="#450a0a"/><text x="26" y="48" text-anchor="middle" font-size="9" font-weight="bold" fill="#fca5a5">INCIDENT</text><text x="26" y="62" text-anchor="middle" font-size="8" fill="#fca5a5">platform down</text></g>
+<g stroke="#ef4444" stroke-width="3" stroke-linecap="round" fill="none"><path d="M296 140 q-7 9 0 18"/><path d="M288 134 q-12 15 0 30"/><path d="M372 134 q7 9 0 18"/></g>
+<!-- speech bubble -->
+<rect x="150" y="30" width="130" height="40" rx="10" fill="#f8fafc"/>
+<path d="M162 70 l-12 20 l26 -20z" fill="#f8fafc"/>
+<text x="215" y="56" text-anchor="middle" font-size="16" font-weight="bold" fill="#b91c1c">Wéér?! Nú?!</text>
+<text x="200" y="250" text-anchor="middle" font-size="13" fill="#cbd5e1">"Het platform is stuk. Natuurlijk om 03:07."</text>
+</g></svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" font-family="Segoe UI, Arial, sans-serif"><rect width="400" height="260" rx="14" fill="#000" stroke="#334155" stroke-width="2"/><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#e2e8f0"/></marker></defs><rect x="20" y="104" width="62" height="52" rx="8" fill="#0f172a" stroke="#94a3b8" stroke-width="2"/>
+<text x="51" y="135" text-anchor="middle" font-size="14" fill="#e2e8f0">Klant</text>
+<path d="M84 130 H112" stroke="#e2e8f0" stroke-width="3" marker-end="url(#a)"/>
+<rect x="116" y="100" width="92" height="60" rx="8" fill="#166534" stroke="#22c55e" stroke-width="2"/>
+<rect x="150" y="108" width="24" height="18" rx="3" fill="#22c55e"/><path d="M155 108 v-5 a7 7 0 0 1 14 0 v5" fill="none" stroke="#22c55e" stroke-width="3"/>
+<text x="162" y="152" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Ingress+HTTPS</text>
+<path d="M210 130 C240 130 240 80 268 80" fill="none" stroke="#e2e8f0" stroke-width="3" marker-end="url(#a)"/>
+<path d="M210 130 C240 130 240 182 268 182" fill="none" stroke="#e2e8f0" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#a)"/>
+<rect x="272" y="58" width="110" height="46" rx="8" fill="#0ea5e9"/><text x="327" y="87" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">rev 1 · 80%</text>
+<rect x="272" y="160" width="110" height="46" rx="8" fill="#f59e0b"/><text x="327" y="189" text-anchor="middle" font-size="16" font-weight="bold" fill="#1c1917">rev 2 · 20%</text>
+<text x="200" y="242" text-anchor="middle" font-size="14" fill="#e2e8f0">Gefaseerd uitrollen, simpel terugdraaien</text></svg>

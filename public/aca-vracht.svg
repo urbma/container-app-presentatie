@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  <rect width="640" height="360" rx="16" fill="#000"/>
+  <g fill="#f8fafc"><circle cx="60" cy="70" r="1.5"/><circle cx="150" cy="110" r="1.2"/><circle cx="300" cy="60" r="1.5"/><circle cx="420" cy="80" r="1.2"/><circle cx="590" cy="60" r="1.5"/><circle cx="610" cy="130" r="1.2"/><circle cx="240" cy="95" r="1"/></g>
+  <text x="320" y="36" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="20" font-weight="bold" fill="#f8fafc">Jij levert de container, Azure vliegt hem erheen</text>
+
+  <!-- runway -->
+  <path d="M0 300 H640" stroke="#334155" stroke-width="4"/>
+  <g stroke="#475569" stroke-width="4" stroke-linecap="round"><path d="M20 316 h30 M90 316 h30 M160 316 h30 M230 316 h30 M300 316 h30 M370 316 h30 M440 316 h30 M510 316 h30 M580 316 h30"/></g>
+
+  <!-- plane tail -->
+  <path d="M250 190 L226 120 L262 120 L300 190z" fill="#38bdf8"/>
+  <!-- fuselage -->
+  <path d="M230 190 H520 Q585 190 600 232 Q585 268 520 268 H250 Q230 268 230 232z" fill="#e2e8f0"/>
+  <path d="M232 244 H598" stroke="#0ea5e9" stroke-width="6"/>
+  <!-- cockpit -->
+  <path d="M540 200 H570 Q588 208 592 224 H540z" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+  <text x="564" y="217" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#4ade80">auto</text>
+  <!-- cargo door open at rear (left) with ramp -->
+  <path d="M230 205 L190 300 H236 L262 205z" fill="#475569"/>
+  <rect x="258" y="205" width="40" height="52" fill="#0f172a"/>
+  <!-- text -->
+  <text x="420" y="236" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="17" font-weight="bold" fill="#0f172a">Azure Container Apps</text>
+  <!-- wing + engine -->
+  <path d="M380 262 L330 296 H440 L460 262z" fill="#94a3b8"/>
+  <rect x="352" y="274" width="44" height="20" rx="10" fill="#64748b"/>
+  <!-- wheels -->
+  <circle cx="300" cy="288" r="10" fill="#1e293b" stroke="#94a3b8" stroke-width="3"/>
+  <circle cx="520" cy="288" r="10" fill="#1e293b" stroke="#94a3b8" stroke-width="3"/>
+  <path d="M300 268 v12 M520 268 v12" stroke="#94a3b8" stroke-width="4"/>
+
+  <!-- Java container being loaded -->
+  <g transform="translate(120 236)">
+    <rect x="-4" y="0" width="76" height="40" rx="3" fill="#38bdf8" stroke="#bae6fd" stroke-width="2"/>
+    <rect x="22" y="6" width="28" height="26" rx="4" fill="#f8fafc"/>
+    <path d="M50 12 q9 0 9 8 q0 8 -9 8" fill="none" stroke="#f8fafc" stroke-width="3"/>
+    <text x="36" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#ea580c">Java</text>
+  </g>
+  <path d="M200 256 H228" stroke="#f8fafc" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>
+
+  <!-- dev -->
+  <g stroke="#f8fafc" stroke-width="5" stroke-linecap="round" fill="none">
+    <circle cx="60" cy="236" r="13" fill="#000"/>
+    <path d="M60 249 V284"/><path d="M60 258 L100 250"/><path d="M60 258 L40 274"/><path d="M60 284 L48 304"/><path d="M60 284 L74 304"/>
+  </g>
+  <circle cx="55" cy="233" r="2" fill="#f8fafc"/><circle cx="65" cy="233" r="2" fill="#f8fafc"/>
+  <path d="M54 241 q6 5 12 0" fill="none" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round"/>
+
+  <text x="320" y="345" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="14" fill="#94a3b8">Geen vloot, geen piloten, geen vliegveld om te beheren.</text>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c4a6e"/><stop offset="1" stop-color="#38bdf8"/></linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="16" fill="url(#sky)"/>
+  <!-- sun -->
+  <circle cx="540" cy="90" r="34" fill="#fde68a"/>
+  <!-- clouds -->
+  <g fill="#f1f5f9" opacity="0.9">
+    <ellipse cx="130" cy="100" rx="50" ry="16"/><ellipse cx="160" cy="88" rx="30" ry="16"/>
+    <ellipse cx="400" cy="90" rx="44" ry="13"/><ellipse cx="425" cy="80" rx="24" ry="12"/>
+  </g>
+  <!-- sea -->
+  <rect x="0" y="236" width="640" height="124" rx="16" fill="#0369a1"/>
+  <path d="M0 246 q20 -10 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 V360 H0z" fill="#0284c7"/>
+  <g fill="none" stroke="#7dd3fc" stroke-width="3" stroke-linecap="round" opacity="0.7">
+    <path d="M40 300 q10 -8 20 0 t20 0"/>
+  </g>
+
+  <!-- ship hull -->
+  <path d="M130 236 H500 L470 290 Q465 298 455 298 H175 Q165 298 160 290z" fill="#1e293b"/>
+  <path d="M138 250 H492" stroke="#38bdf8" stroke-width="6"/>
+  <text x="315" y="281" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="17" font-weight="bold" fill="#f8fafc">Azure Container Apps</text>
+
+  <!-- containers -->
+  <rect x="150" y="196" width="80" height="40" rx="3" fill="#f59e0b"/>
+  <rect x="236" y="196" width="80" height="40" rx="3" fill="#22c55e"/>
+  <rect x="322" y="196" width="80" height="40" rx="3" fill="#a78bfa"/>
+  <rect x="193" y="156" width="80" height="40" rx="3" fill="#ef4444"/>
+  <rect x="279" y="156" width="80" height="40" rx="3" fill="#38bdf8"/>
+  <g stroke="#0f172a" stroke-width="2" opacity="0.35">
+    <path d="M166 196 v40 M182 196 v40 M198 196 v40 M214 196 v40 M252 196 v40 M268 196 v40 M284 196 v40 M300 196 v40 M338 196 v40 M354 196 v40 M370 196 v40 M386 196 v40 M209 156 v40 M225 156 v40 M241 156 v40 M257 156 v40 M295 156 v40 M311 156 v40 M327 156 v40 M343 156 v40"/>
+  </g>
+  <!-- Java container with cup logo -->
+  <rect x="279" y="156" width="80" height="40" rx="3" fill="#38bdf8"/>
+  <rect x="304" y="162" width="30" height="28" rx="4" fill="#f8fafc"/>
+  <path d="M334 168 q10 0 10 8 q0 8 -10 8" fill="none" stroke="#f8fafc" stroke-width="3"/>
+  <text x="319" y="181" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ea580c">Java</text>
+
+  <!-- cabin, no captain -->
+  <rect x="412" y="170" width="70" height="66" rx="4" fill="#f1f5f9"/>
+  <rect x="424" y="180" width="46" height="20" rx="3" fill="#0f172a"/>
+  <text x="447" y="195" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#4ade80">auto</text>
+  <rect x="436" y="140" width="10" height="30" fill="#94a3b8"/>
+  <path d="M446 142 l22 8 l-22 8z" fill="#22c55e"/>
+
+  <!-- dev on shore with mug waving -->
+  <path d="M0 300 Q40 270 100 300 V360 H0z" fill="#334155" opacity="0"/>
+  <g stroke="#f8fafc" stroke-width="5" stroke-linecap="round" fill="none">
+    <circle cx="68" cy="296" r="13" fill="#0c4a6e"/>
+    <path d="M68 309 V338"/><path d="M68 316 L50 304"/><path d="M68 316 L88 300"/><path d="M68 338 L58 356"/><path d="M68 338 L80 356"/>
+  </g>
+  <circle cx="63" cy="293" r="2" fill="#f8fafc"/><circle cx="73" cy="293" r="2" fill="#f8fafc"/>
+  <path d="M62 301 q6 5 12 0" fill="none" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round"/>
+
+  <text x="320" y="36" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="20" font-weight="bold" fill="#f8fafc">Jij levert de container, Azure vaart het schip</text>
+  <text x="400" y="336" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="14" fill="#e0f2fe">Geen cluster, geen kapitein, geen machinekamer.</text>
+</svg>

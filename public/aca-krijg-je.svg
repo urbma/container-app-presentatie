@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#7dd3fc"/></linearGradient>
+    <linearGradient id="night" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#312e81"/><stop offset="1" stop-color="#0ea5e9"/></linearGradient>
+  </defs>
+  <rect width="640" height="360" rx="16" fill="#1e293b"/>
+  <g font-family="Comic Sans MS, Arial, sans-serif" font-weight="bold" fill="#f8fafc">
+    <text x="320" y="30" text-anchor="middle" font-size="20">Container Apps: lekker achterover leunen</text>
+  </g>
+
+  <!-- PANEL 1: no kubernetes -->
+  <rect x="16" y="44" width="300" height="140" rx="12" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <rect x="16" y="44" width="300" height="140" rx="12" fill="url(#sky)" opacity="0.18"/>
+  <!-- palm / hammock -->
+  <path d="M40 80 V174" stroke="#a16207" stroke-width="6" stroke-linecap="round"/>
+  <path d="M170 90 V174" stroke="#a16207" stroke-width="6" stroke-linecap="round"/>
+  <path d="M42 100 Q105 150 168 106" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round"/>
+  <path d="M30 78 q10 -14 24 -4 M30 78 q-2 -16 12 -18 M42 74 q16 -4 20 10" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
+  <!-- dev -->
+  <circle cx="92" cy="106" r="11" fill="#fde68a"/>
+  <path d="M84 100 q8 -10 18 0" fill="#7c2d12"/>
+  <path d="M81 114 Q108 128 140 112" fill="none" stroke="#38bdf8" stroke-width="9" stroke-linecap="round"/>
+  <path d="M86 108 q6 4 12 0" fill="none" stroke="#7c2d12" stroke-width="2" stroke-linecap="round"/>
+  <rect x="104" y="124" width="14" height="14" rx="3" fill="#f8fafc"/><path d="M118 128 q5 0 5 5 q0 4 -5 4" fill="none" stroke="#f8fafc" stroke-width="2"/>
+  <text x="111" y="135" text-anchor="middle" font-family="Arial" font-size="8" font-weight="bold" fill="#ea580c">J</text>
+  <text x="128" y="96" font-family="Comic Sans MS, Arial" font-size="14" font-weight="bold" fill="#e2e8f0">zzz</text>
+  <!-- ship wheel (kubernetes helm) crossed out -->
+  <g transform="translate(246 104)">
+    <circle r="26" fill="none" stroke="#64748b" stroke-width="5"/>
+    <circle r="7" fill="#64748b"/>
+    <g stroke="#64748b" stroke-width="5" stroke-linecap="round">
+      <path d="M0 -36 V36 M-36 0 H36 M-25 -25 L25 25 M-25 25 L25 -25"/>
+    </g>
+    <path d="M-34 34 L34 -34" stroke="#ef4444" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <text x="246" y="160" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="12" fill="#94a3b8">kubectl? helm? nodes?</text>
+  <text x="166" y="177" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="13" font-weight="bold" fill="#f8fafc">1. Geen Kubernetes-kennis nodig</text>
+
+  <!-- PANEL 2: scale to zero -->
+  <rect x="324" y="44" width="300" height="140" rx="12" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <rect x="324" y="44" width="150" height="140" rx="12" fill="#312e81" opacity="0.55"/>
+  <rect x="474" y="44" width="150" height="140" rx="12" fill="#0ea5e9" opacity="0.28"/>
+  <!-- night side -->
+  <path d="M356 60 a14 14 0 1 0 14 20 a11 11 0 1 1 -14 -20z" fill="#fde68a"/>
+  <g fill="#f8fafc"><circle cx="420" cy="64" r="1.6"/><circle cx="445" cy="78" r="1.4"/><circle cx="400" cy="88" r="1.2"/><circle cx="455" cy="58" r="1.2"/></g>
+  <!-- sleeping container -->
+  <rect x="372" y="110" width="52" height="30" rx="4" fill="#475569" stroke="#94a3b8" stroke-width="2"/>
+  <path d="M385 110 v30 M398 110 v30 M411 110 v30" stroke="#64748b" stroke-width="2"/>
+  <path d="M382 123 h9 M404 123 h9" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="428" y="108" font-family="Comic Sans MS, Arial" font-size="13" font-weight="bold" fill="#e2e8f0">zZz</text>
+  <text x="399" y="158" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="12" fill="#c7d2fe">0 replicas</text>
+  <!-- day side -->
+  <circle cx="594" cy="68" r="12" fill="#fbbf24"/>
+  <g stroke="#fbbf24" stroke-width="3" stroke-linecap="round"><path d="M594 48 v-4 M594 88 v4 M574 68 h-4 M614 68 h4 M580 54 l-3 -3 M608 82 l3 3 M608 54 l3 -3 M580 82 l-3 3"/></g>
+  <g>
+    <rect x="486" y="118" width="34" height="20" rx="3" fill="#0ea5e9" stroke="#bae6fd" stroke-width="1.5"/>
+    <rect x="524" y="118" width="34" height="20" rx="3" fill="#0ea5e9" stroke="#bae6fd" stroke-width="1.5"/>
+    <rect x="562" y="118" width="34" height="20" rx="3" fill="#0ea5e9" stroke="#bae6fd" stroke-width="1.5"/>
+    <rect x="505" y="96" width="34" height="20" rx="3" fill="#38bdf8" stroke="#bae6fd" stroke-width="1.5"/>
+    <rect x="543" y="96" width="34" height="20" rx="3" fill="#38bdf8" stroke="#bae6fd" stroke-width="1.5"/>
+    <rect x="524" y="74" width="34" height="20" rx="3" fill="#7dd3fc" stroke="#bae6fd" stroke-width="1.5"/>
+  </g>
+    <text x="548" y="162" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="12" fill="#bae6fd">drukte? schaalt vanzelf</text>
+  <text x="474" y="177" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="13" font-weight="bold" fill="#f8fafc">2. Automatisch schalen, ook naar nul</text>
+
+  <!-- PANEL 3: ingress / https / revisions -->
+  <rect x="16" y="196" width="300" height="140" rx="12" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <!-- globe -> lock -> fork -->
+  <circle cx="52" cy="256" r="22" fill="#0f172a" stroke="#94a3b8" stroke-width="2.5"/>
+  <path d="M30 256 h44 M52 234 q-14 22 0 44 M52 234 q14 22 0 44" fill="none" stroke="#38bdf8" stroke-width="2"/>
+  <path d="M76 256 H100" stroke="#e2e8f0" stroke-width="3" marker-end="url(#a)"/>
+  <rect x="100" y="246" width="30" height="24" rx="4" fill="#22c55e"/>
+  <path d="M106 246 v-6 a9 9 0 0 1 18 0 v6" fill="none" stroke="#22c55e" stroke-width="4"/>
+  <circle cx="115" cy="256" r="3" fill="#052e16"/><path d="M115 256 v8" stroke="#052e16" stroke-width="2.5"/>
+  <text x="115" y="284" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="11" fill="#86efac">https</text>
+  <path d="M132 258 H156" stroke="#e2e8f0" stroke-width="3"/>
+  <!-- revision fork -->
+  <path d="M156 258 C180 258 180 232 204 232" fill="none" stroke="#e2e8f0" stroke-width="3"/>
+  <path d="M156 258 C180 258 180 286 204 286" fill="none" stroke="#e2e8f0" stroke-width="3" stroke-dasharray="6 4"/>
+  <rect x="204" y="216" width="80" height="32" rx="8" fill="#0ea5e9"/>
+  <text x="244" y="237" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="13" font-weight="bold" fill="#fff">v1 · 80%</text>
+  <rect x="204" y="270" width="80" height="32" rx="8" fill="#f59e0b"/>
+  <text x="244" y="291" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="13" font-weight="bold" fill="#1c1917">v2 · 20%</text>
+  <text x="244" y="314" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="11" fill="#fcd34d">terugdraaien kan altijd</text>
+  <text x="166" y="326" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="13" font-weight="bold" fill="#f8fafc">3. Ingress, HTTPS en revisions</text>
+
+  <!-- PANEL 4: pay per use -->
+  <rect x="324" y="196" width="300" height="140" rx="12" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <!-- stopwatch -->
+  <circle cx="378" cy="262" r="30" fill="#1e293b" stroke="#f8fafc" stroke-width="4"/>
+  <rect x="371" y="224" width="14" height="6" rx="2" fill="#f8fafc"/>
+  <path d="M378 262 V242" stroke="#f8fafc" stroke-width="4" stroke-linecap="round"/>
+  <path d="M378 262 L392 270" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="378" cy="262" r="3" fill="#f8fafc"/>
+  <text x="378" y="308" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="12" fill="#cbd5e1">per seconde</text>
+  <!-- coins dripping into piggy -->
+  <g font-family="Comic Sans MS, Arial" font-weight="bold" font-size="13" text-anchor="middle">
+    <circle cx="470" cy="228" r="11" fill="#fbbf24" stroke="#b45309" stroke-width="2"/><text x="470" y="233" fill="#78350f">€</text>
+    <circle cx="500" cy="244" r="9" fill="#fbbf24" stroke="#b45309" stroke-width="2" opacity="0.6"/><text x="500" y="248" fill="#78350f" font-size="11">€</text>
+  </g>
+  <!-- piggy -->
+  <ellipse cx="545" cy="274" rx="40" ry="28" fill="#f9a8d4"/>
+  <circle cx="518" cy="266" r="0"/>
+  <path d="M520 252 l-4 -12 l12 6z" fill="#f472b6"/>
+  <ellipse cx="582" cy="278" rx="10" ry="8" fill="#f472b6"/>
+  <circle cx="579" cy="277" r="1.8" fill="#831843"/><circle cx="585" cy="277" r="1.8" fill="#831843"/>
+  <circle cx="563" cy="264" r="3" fill="#831843"/>
+  <rect x="535" y="246" width="22" height="4" rx="2" fill="#831843"/>
+  <rect x="524" y="296" width="9" height="12" rx="3" fill="#f472b6"/><rect x="556" y="296" width="9" height="12" rx="3" fill="#f472b6"/>
+  <path d="M505 272 q-10 -6 -6 -14" fill="none" stroke="#f472b6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M440 262 H474" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="474" y="326" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="13" font-weight="bold" fill="#f8fafc">4. Betalen per gebruik</text>
+
+  <text x="320" y="353" text-anchor="middle" font-family="Comic Sans MS, Arial" font-size="12" fill="#94a3b8">Jij schrijft de Java, Azure doet de rest.</text>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#e2e8f0"/></marker>
+  </defs>
+</svg>

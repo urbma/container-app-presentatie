@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" font-family="Segoe UI, Arial, sans-serif"><rect width="400" height="260" rx="14" fill="#000" stroke="#334155" stroke-width="2"/><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#e2e8f0"/></marker></defs><rect x="20" y="24" width="360" height="192" rx="14" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="9 6"/>
+<text x="34" y="46" font-size="14" font-weight="bold" fill="#7dd3fc">VNet · 10.15.60.0/25</text>
+<g font-size="11" text-anchor="middle">
+<rect x="36" y="60" width="104" height="60" rx="8" fill="#111c33" stroke="#22c55e" stroke-width="2"/><text x="88" y="84" fill="#86efac" font-weight="bold">container-apps</text><text x="88" y="100" fill="#94a3b8">/27 · delegated</text><text x="88" y="112" fill="#94a3b8">Microsoft.App</text>
+<rect x="148" y="60" width="104" height="60" rx="8" fill="#111c33" stroke="#f472b6" stroke-width="2"/><text x="200" y="84" fill="#f9a8d4" font-weight="bold">private-endpoints</text><text x="200" y="100" fill="#94a3b8">/27</text>
+<rect x="260" y="60" width="104" height="60" rx="8" fill="#111c33" stroke="#a78bfa" stroke-width="2"/><text x="312" y="84" fill="#c4b5fd" font-weight="bold">database</text><text x="312" y="100" fill="#94a3b8">/28 · delegated</text>
+<rect x="36" y="132" width="104" height="60" rx="8" fill="#111c33" stroke="#38bdf8" stroke-width="2"/><text x="88" y="156" fill="#7dd3fc" font-weight="bold">service-bus</text><text x="88" y="172" fill="#94a3b8">/28</text>
+<rect x="148" y="132" width="104" height="60" rx="8" fill="#111c33" stroke="#facc15" stroke-width="2"/><text x="200" y="156" fill="#fde68a" font-weight="bold">storage</text><text x="200" y="172" fill="#94a3b8">/28</text>
+<rect x="260" y="132" width="104" height="60" rx="8" fill="#111c33" stroke="#fb923c" stroke-width="2"/><text x="312" y="156" fill="#fdba74" font-weight="bold">web-app</text><text x="312" y="172" fill="#94a3b8">/28 · delegated</text>
+</g>
+<text x="200" y="242" text-anchor="middle" font-size="14" fill="#e2e8f0">VNet = je eigen netwerk · subnet = een deel ervan</text></svg>

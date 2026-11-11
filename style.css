@@ -1,0 +1,11 @@
+﻿.slidev-layout {
+  background-color: #000;
+}
+
+h1 {
+  color: #22d3ee !important;
+  -webkit-text-fill-color: #22d3ee !important;
+  background: none !important;
+  font-weight: 700;
+  text-shadow: 0 0 18px rgba(34, 211, 238, 0.55);
+}
