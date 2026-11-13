@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" font-family="Segoe UI, sans-serif">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#fff"/></marker></defs>
+<rect width="640" height="360" rx="14" fill="#000" stroke="#334155" stroke-width="2"/>
+<text x="320" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">Hoe komt een request bij de app en de services?</text>
+<circle cx="45" cy="110" r="16" fill="none" stroke="#fff" stroke-width="2.5"/><line x1="45" y1="126" x2="45" y2="156" stroke="#fff" stroke-width="2.5"/><line x1="25" y1="138" x2="65" y2="138" stroke="#fff" stroke-width="2.5"/>
+<text x="45" y="176" text-anchor="middle" font-size="11" fill="#94a3b8">internet</text>
+<rect x="90" y="86" width="110" height="64" rx="10" fill="#0ea5e9"/>
+<text x="145" y="112" text-anchor="middle" font-size="14" font-weight="700" fill="#000">Front Door</text>
+<text x="145" y="130" text-anchor="middle" font-size="10" fill="#000">routes + WAF</text>
+<path d="M65 118 H90" stroke="#fff" stroke-width="2" marker-end="url(#a)"/>
+<g font-size="10" fill="#fbbf24" font-family="Consolas, monospace"><text x="100" y="58">/ , /portal-app/*</text><text x="296" y="244" text-anchor="end">/*-service/*</text></g>
+<path d="M200 105 L270 90" stroke="#fbbf24" stroke-width="2" marker-end="url(#a)"/>
+<path d="M145 150 V250 H300" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#a)"/>
+<text x="152" y="200" font-size="9" fill="#94a3b8">Private Link</text>
+<rect x="275" y="60" width="150" height="80" rx="10" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+<text x="350" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="#22d3ee">App Service</text>
+<text x="350" y="102" text-anchor="middle" font-size="11" fill="#cbd5e1">nginx + Angular-app</text>
+<text x="350" y="120" text-anchor="middle" font-size="10" fill="#94a3b8">private endpoint + VNet</text>
+<rect x="305" y="205" width="300" height="100" rx="10" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="318" y="224" font-size="11" font-weight="700" fill="#38bdf8">Container App Environment (internal)</text>
+<g font-size="10" font-weight="700" fill="#000" text-anchor="middle">
+<rect x="318" y="236" width="130" height="24" rx="6" fill="#22c55e"/><text x="383" y="252">portal-service</text>
+<rect x="458" y="236" width="135" height="24" rx="6" fill="#22c55e"/><text x="525" y="252">notification-service</text>
+<rect x="318" y="268" width="130" height="24" rx="6" fill="#22c55e"/><text x="383" y="284">translation-service</text>
+<rect x="458" y="268" width="135" height="24" rx="6" fill="#22c55e"/><text x="525" y="284">external-notif.</text></g>
+</svg>

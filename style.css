@@ -1,4 +1,4 @@
-﻿.slidev-layout {
+.slidev-layout {
   background-color: #000;
 }
 
@@ -9,3 +9,4 @@ h1 {
   font-weight: 700;
   text-shadow: 0 0 18px rgba(34, 211, 238, 0.55);
 }
+h1 code{font-size:.75em;background:transparent;padding:0;-webkit-text-fill-color:#facc15;color:#facc15;text-shadow:none}

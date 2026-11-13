@@ -1,10 +1,10 @@
 ---
 theme: seriph
 background: /title-bg.svg
-title: Van AKS naar Azure Container Apps
+title: Van AKS naar ACA
 colorSchema: dark
 info: |
-  ## Van AKS naar Azure Container Apps
+  ## Van AKS naar ACA
   Ons migratieproject.
 class: text-center
 drawings:
@@ -14,7 +14,7 @@ comark: true
 duration: 35min
 ---
 
-# Van AKS naar Azure Container Apps
+# Van AKS naar ACA
 
 Ons migratieproject
 
@@ -30,7 +30,7 @@ transition: fade
 
 Een **serverless containerplatform** van Azure om containers te draaien zonder zelf een cluster te beheren.
 
-<img src="/aca-vracht.svg" class="mx-auto mt-4 h-72 rounded-xl shadow-xl" />
+<img src="/aca-schip.svg" class="mx-auto mt-4 h-72 rounded-xl shadow-xl" />
 
 <!--
 Kernboodschap: Container Apps zit tussen App Service en AKS in. Je krijgt de flexibiliteit van containers, zonder de operationele last van een Kubernetes-cluster.
@@ -71,6 +71,7 @@ Automatisch schalen, ook naar nul: Schaal op HTTP-verkeer, queues of events. Gee
 
 <img src="/krijg-3.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
 
+<!--
 Ingress, HTTPS en revisions: Ingebouwd, zonder ingress controller of certificaatbeheer. Revisions maken gefaseerde uitrol en rollback eenvoudig.
 -->
 
@@ -320,9 +321,9 @@ Titelslide: De verhuizing van AKS naar Container Apps ging niet pijnloos. Vooral
 
 # Een container app aanmaken
 
-<div class="w-3/5">
+<div class="w-[85%]">
 
-- Eén commando en je app draait
+- Eén commando en je app draait. Wat kan er misgaan? 😇
 
 </div>
 
@@ -336,9 +337,9 @@ Eén commando: Een container app aanmaken is in het begin heel makkelijk. Voor e
 
 # Een container app aanmaken
 
-<div class="w-3/5">
+<div class="w-[85%]">
 
-- <span class="opacity-50">Eén commando en je app draait</span>
+- <span class="opacity-50">Eén commando en je app draait. Wat kan er misgaan? 😇</span>
 - Publieke URL en HTTPS krijg je cadeau
 
 </div>
@@ -353,11 +354,11 @@ Publieke URL en HTTPS: Out of the box krijg je een publieke URL met certificaat.
 
 # Een container app aanmaken
 
-<div class="w-3/5">
+<div class="w-[85%]">
 
-- <span class="opacity-50">Eén commando en je app draait</span>
+- <span class="opacity-50">Eén commando en je app draait. Wat kan er misgaan? 😇</span>
 - <span class="opacity-50">Publieke URL en HTTPS krijg je cadeau</span>
-- Dan komt de eis: alleen via het VNet bereikbaar
+- Dan komt de eis: alleen via het VNet 🔒
 
 </div>
 
@@ -369,15 +370,15 @@ De eis: Bij ons mag een container app niet publiek bereikbaar zijn, alleen via e
 
 ---
 
-# De eis: alleen via het VNet
+# De eis: "Maar niet op het internet, hè?"
 
-<div class="w-3/5">
+<div class="w-[52%]">
 
-- Geen publiek endpoint toegestaan
+- Geen publiek endpoint
 
 </div>
 
-<img src="/aca-netwerk.svg" class="absolute right-10 bottom-12 w-[28rem] rounded-xl" />
+<img src="/aca-netwerk.svg" class="absolute right-8 bottom-8 w-[26rem] rounded-xl" />
 
 <!--
 Geen publiek endpoint: Security-eis. Alles moet via het BMW-netwerk lopen.
@@ -385,16 +386,16 @@ Geen publiek endpoint: Security-eis. Alles moet via het BMW-netwerk lopen.
 
 ---
 
-# De eis: alleen via het VNet
+# De eis: "Maar niet op het internet, hè?"
 
-<div class="w-3/5">
+<div class="w-[52%]">
 
-- <span class="opacity-50">Geen publiek endpoint toegestaan</span>
+- <span class="opacity-50">Geen publiek endpoint</span>
 - Dus: een Container App Environment in een VNet
 
 </div>
 
-<img src="/aca-netwerk.svg" class="absolute right-10 bottom-12 w-[28rem] rounded-xl" />
+<img src="/aca-netwerk.svg" class="absolute right-8 bottom-8 w-[26rem] rounded-xl" />
 
 <!--
 Container App Environment: De container apps leven in een environment, en die moet in een eigen VNet-subnet hangen (VNet-integratie).
@@ -402,17 +403,17 @@ Container App Environment: De container apps leven in een environment, en die mo
 
 ---
 
-# De eis: alleen via het VNet
+# De eis: "Maar niet op het internet, hè?"
 
-<div class="w-3/5">
+<div class="w-[52%]">
 
-- <span class="opacity-50">Geen publiek endpoint toegestaan</span>
+- <span class="opacity-50">Geen publiek endpoint</span>
 - <span class="opacity-50">Dus: een Container App Environment in een VNet</span>
-- Dus: subnets die aan eisen voldoen
+- Dus: subnets met eisen (grootte, delegation)
 
 </div>
 
-<img src="/aca-netwerk.svg" class="absolute right-10 bottom-12 w-[28rem] rounded-xl" />
+<img src="/aca-netwerk.svg" class="absolute right-8 bottom-8 w-[26rem] rounded-xl" />
 
 <!--
 Subnets: Dat subnet moet voldoen aan eisen: voldoende groot (bij ons /27), gedelegeerd aan Microsoft.App/environments en met een NSG en route table.
@@ -420,18 +421,18 @@ Subnets: Dat subnet moet voldoen aan eisen: voldoende groot (bij ons /27), gedel
 
 ---
 
-# De eis: alleen via het VNet
+# De eis: "Maar niet op het internet, hè?"
 
-<div class="w-3/5">
+<div class="w-[52%]">
 
-- <span class="opacity-50">Geen publiek endpoint toegestaan</span>
+- <span class="opacity-50">Geen publiek endpoint</span>
 - <span class="opacity-50">Dus: een Container App Environment in een VNet</span>
-- <span class="opacity-50">Dus: subnets die aan eisen voldoen</span>
-- En: private endpoints en private DNS eromheen
+- <span class="opacity-50">Dus: subnets met eisen (grootte, delegation)</span>
+- En: private endpoints en private DNS
 
 </div>
 
-<img src="/aca-netwerk.svg" class="absolute right-10 bottom-12 w-[28rem] rounded-xl" />
+<img src="/aca-netwerk.svg" class="absolute right-8 bottom-8 w-[26rem] rounded-xl" />
 
 <!--
 Private endpoints en DNS: Alle diensten eromheen (Key Vault, Service Bus, Storage, registry) moeten ook privé bereikbaar zijn, en dat vraagt private endpoints en private DNS zones. Wat is dat allemaal? De volgende slides leggen de termen uit.
@@ -439,14 +440,14 @@ Private endpoints en DNS: Alle diensten eromheen (Key Vault, Service Bus, Storag
 
 ---
 
-# Azure-termen: VNet en subnet
+# Azure-woordenboek 1: VNet en subnet
 
 <div class="w-[52%] text-base">
 
-- **VNet** (virtual network): jouw eigen, afgeschermde netwerk in Azure
-- **Subnet**: een deel van dat netwerk met een eigen IP-bereik, bijv. `10.15.60.224/27`
+- **VNet**: je eigen privé-LAN binnen Azure, het kantoornetwerk maar dan virtueel
+- **Subnet**: een afgeschermd segment van dat LAN, zoals de serverruimte, met een eigen IP-bereik, bijv. `10.15.60.224/27`
 - **Delegation**: subnet exclusief voor één dienst, bij ons `Microsoft.App/environments`
-- **Bij ons**: VNet aanmaken kan niet zomaar in de Azure Portal, maar via het BMW Manage Portal (`/25`, Frankfurt, gekoppeld aan een firewall-hub)
+- **Bij ons**: "Create VNet" in de Azure Portal? Vergeet het. Dat gaat via het BMW Manage Portal 🙃
 
 </div>
 
@@ -458,14 +459,14 @@ VNet en subnet: Een VNet is een eigen privé-netwerk. Subnets verdelen dat netwe
 
 ---
 
-# Azure-termen: NSG, route table en firewall
+# Azure-woordenboek 2: de poortwachters
 
 <div class="w-[52%] text-base">
 
-- **NSG** (network security group): poortwachter op een subnet, wie mag op welke poort erin en eruit
-- **Route table** (UDR): stuurt uitgaand verkeer (`0.0.0.0/0`) via de firewall in de hub
-- **Hub-spoke / peering**: ons VNet (spoke) is gekoppeld aan het BMW-hub met VPN en firewall
-- **Tufin**: hiermee vragen we firewallregels aan voor verkeer dat erdoor moet
+- **NSG**: de uitsmijter van je subnet. Staat jouw poort niet op de lijst, dan kom je er niet in
+- **Route table** (UDR): het verkeersbord. Alles naar buiten (`0.0.0.0/0`) moet eerst langs de firewall
+- **Hub-spoke / peering**: ons VNet (spoke) hangt aan het BMW-hub, met VPN en firewall
+- **Tufin**: het loket voor firewallregels. Reken op wachttijd ⏳
 
 </div>
 
@@ -477,14 +478,14 @@ NSG en route table: Elk subnet krijgt een NSG. Uitgaand verkeer gaat via een rou
 
 ---
 
-# Azure-termen: private endpoint
+# Azure-woordenboek 3: private endpoint
 
 <div class="w-[52%] text-base">
 
-- **Private endpoint**: een netwerkkaart met een **privé-IP** in jouw subnet, die naar een Azure-dienst wijst
-- Key Vault, Service Bus, Storage en Registry zijn zo niet meer publiek bereikbaar
-- **Private Link**: de techniek erachter. Front Door gebruikt die ook om bij onze Container App Environment te komen
-- **Bij ons**: de DNS-records van elke private endpoint moeten we aanmaken via het BMW Manage Portal
+- **Private endpoint**: een eigen achterdeur naar een Azure-dienst, met een **privé-IP** in jouw subnet
+- Key Vault, Service Bus, Storage en Registry gaan van het internet af. Alleen jij hebt de sleutel 🔑
+- **Private Link**: de techniek erachter. Ook Front Door gebruikt hem om bij onze environment te komen
+- **Bij ons**: elk endpoint krijgt pas een naam als je in het BMW Manage Portal op "Create Missing" klikt
 
 </div>
 
@@ -496,14 +497,14 @@ Private endpoint: Een deur naar een PaaS-dienst die alleen binnen het VNet besta
 
 ---
 
-# Azure-termen: private DNS zone
+# Azure-woordenboek 4: private DNS zone
 
 <div class="w-[52%] text-base">
 
-- **DNS**: vertaalt een naam naar een IP-adres
-- **Private DNS zone**: zo'n vertaaltabel die alleen geldt binnen een gelinkt VNet
-- **Container App Environment**: zone met de default domain als naam en een wildcard A-record naar het interne IP
-- **Bij ons**: zones via Terraform, daarna *onboarden* in het BMW Manage Portal. Pas dan resolven ze vanaf het intranet
+- **DNS**: het telefoonboek van het internet
+- **Private DNS zone**: je eigen geheime telefoonboek, alleen leesbaar binnen je VNet
+- **Container App Environment**: eigen zone met een wildcard A-record (`*`) naar het interne IP
+- **Bij ons**: Terraform maakt de zone, maar pas na *onboarden* in het BMW Manage Portal resolvet hij vanaf het intranet. "Het werkt op mijn machine" dus niet 😅
 
 </div>
 
@@ -515,14 +516,14 @@ Private DNS zone: Zonder DNS weet niemand welk IP bij portal-service.<default-do
 
 ---
 
-# Ingress: wat zit waar?
+# Ingress: twee knoppen, één vraag: wie mag erin?
 
 <div class="w-[52%] text-base">
 
-- **Environment**: internal load balancer aan = alleen bereikbaar vanuit het VNet, met een eigen static IP
-- **Container app**: ingress-instellingen per app: poort, alleen HTTPS, verkeer per revision
-- `external_enabled` op de app bepaalt wie erbij mag, binnen wat de environment toestaat
-- **Bij ons**: environment intern. Internet via Front Door en Private Link, intranet via VPN en private DNS
+- **Environment**: internal load balancer aan = alleen vanuit het VNet bereikbaar, met een eigen static IP
+- **Container app**: eigen ingress met poort, HTTPS-only en traffic weights per revision
+- `external_enabled = true` klinkt als "internet", maar in een interne environment betekent het "iedereen in het VNet". Ja, echt 🤯
+- **Bij ons**: environment intern. Het internet komt via Front Door, collega's via VPN en private DNS
 
 </div>
 
@@ -530,6 +531,398 @@ Private DNS zone: Zonder DNS weet niemand welk IP bij portal-service.<default-do
 
 <!--
 Ingress: Twee lagen. De environment bepaalt of er een internal of publieke load balancer is, en in welk VNet het staat. De container app heeft zijn eigen ingress-blok met target port 8080, allow_insecure uit en traffic weights voor revisions. Bij ons is de environment internal (internal_load_balancer_enabled) en hebben de apps ingress aan. Internetgebruikers komen via Front Door met Private Link, collega's via VPN en de private DNS zone.
+-->
+
+---
+
+# Infrastructure as Code, behalve het deel dat je moet klikken
+
+<div class="w-[52%] text-base">
+
+- **Portal** 🖱️: VNet, service principal, tijdelijke rollen en DNS-zones aanvragen
+- **Terraform** ⌨️: subnets, NSG's, environment, apps en private endpoints
+- **Portal** 🖱️ (alweer): DNS-zones onboarden en endpoint-records aanmaken
+- **Tufin** ⏳: firewallregels aanvragen en wachten
+
+</div>
+
+<img src="/term-pingpong.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Heen en weer: Niet alles kan in code. Het VNet, de service principal (met JIT Owner-rol) en de DNS-zones lopen via het BMW Manage Portal. Terraform doet de rest, maar halverwege de apply moeten private DNS zones en private endpoint-records weer handmatig in het portal. Het ging dus een paar keer heen en weer.
+-->
+
+---
+layout: center
+class: text-center
+---
+
+# Logging en monitoring
+
+<!--
+Volgend probleem: hoe kom je erachter wat je apps doen?
+-->
+
+---
+
+# Log Analytics en log stream: "Wat zegt de app nu?"
+
+<div class="w-3/5">
+
+- Log Analytics: eerst KQL leren, dan 5 minuten wachten op je logregel 😴
+
+</div>
+
+<img src="/mon-pijn-1.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+De ingebouwde Azure-oplossing werkte voor ons niet prettig. Log Analytics vraagt KQL-kennis en heeft ingestie-vertraging, de log stream is live-only. Voor een Java-developer die snel een fout wil zoeken is dat te omslachtig.
+-->
+
+---
+
+# Log Analytics en log stream: "Wat zegt de app nu?"
+
+<div class="w-3/5">
+
+- <span class="opacity-50">Log Analytics: eerst KQL leren, dan 5 minuten wachten op je logregel 😴</span>
+- Log stream: blink en je mist de fout. Geen historie, geen zoeken
+
+</div>
+
+<img src="/mon-pijn-2.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+De ingebouwde Azure-oplossing werkte voor ons niet prettig. Log Analytics vraagt KQL-kennis en heeft ingestie-vertraging, de log stream is live-only. Voor een Java-developer die snel een fout wil zoeken is dat te omslachtig.
+-->
+
+---
+
+# Log Analytics en log stream: "Wat zegt de app nu?"
+
+<div class="w-3/5">
+
+- <span class="opacity-50">Log Analytics: eerst KQL leren, dan 5 minuten wachten op je logregel 😴</span>
+- <span class="opacity-50">Log stream: blink en je mist de fout. Geen historie, geen zoeken</span>
+- Logs, traces en metrics: drie plekken, drie schermen, nul overzicht
+
+</div>
+
+<img src="/mon-pijn-3.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+De ingebouwde Azure-oplossing werkte voor ons niet prettig. Log Analytics vraagt KQL-kennis en heeft ingestie-vertraging, de log stream is live-only. Voor een Java-developer die snel een fout wil zoeken is dat te omslachtig.
+-->
+
+---
+
+# Ons alternatief: de Grafana-stack 🔥
+
+<div class="w-[58%] text-lg">
+
+- **Alloy**: collector, ontvangt OpenTelemetry en scrapet `/q/metrics`
+
+</div>
+
+<img src="/mon-stack-1.svg" class="absolute right-8 bottom-12 w-[26rem] rounded-xl" />
+
+<!--
+Wij hosten Grafana, Loki, Tempo en Mimir zelf als container apps via Terraform (monitoring.tf). De Quarkus-apps sturen via de Quarkus OpenTelemetry-extensie logs en traces naar Alloy (http://alloy). Alloy routeert traces naar Tempo en logs naar Loki, en scrapet de Quarkus-metrics elke 30 seconden naar Mimir. Opslag is Azure Blob Storage met 31 dagen retentie. Er staat een Quarkus-dashboard klaar in Grafana. Let op: de OTEL-variabelen staan in de terraform bij sommige services nog uitgecommentarieerd tot de dependencies kloppen.
+-->
+
+---
+
+# Ons alternatief: de Grafana-stack 🔥
+
+<div class="w-[58%] text-lg">
+
+- <span class="opacity-50">**Alloy**: collector, ontvangt OpenTelemetry en scrapet `/q/metrics`</span>
+- **Loki**: logs, **Tempo**: traces, **Mimir**: metrics
+
+</div>
+
+<img src="/mon-stack-2.svg" class="absolute right-8 bottom-12 w-[26rem] rounded-xl" />
+
+<!--
+Wij hosten Grafana, Loki, Tempo en Mimir zelf als container apps via Terraform (monitoring.tf). De Quarkus-apps sturen via de Quarkus OpenTelemetry-extensie logs en traces naar Alloy (http://alloy). Alloy routeert traces naar Tempo en logs naar Loki, en scrapet de Quarkus-metrics elke 30 seconden naar Mimir. Opslag is Azure Blob Storage met 31 dagen retentie. Er staat een Quarkus-dashboard klaar in Grafana. Let op: de OTEL-variabelen staan in de terraform bij sommige services nog uitgecommentarieerd tot de dependencies kloppen.
+-->
+
+---
+
+# Ons alternatief: de Grafana-stack 🔥
+
+<div class="w-[58%] text-lg">
+
+- <span class="opacity-50">**Alloy**: collector, ontvangt OpenTelemetry en scrapet `/q/metrics`</span>
+- <span class="opacity-50">**Loki**: logs, **Tempo**: traces, **Mimir**: metrics</span>
+- **Grafana**: dashboards en zoeken op één plek. Eindelijk 😍
+
+</div>
+
+<img src="/mon-stack-3.svg" class="absolute right-8 bottom-12 w-[26rem] rounded-xl" />
+
+<!--
+Wij hosten Grafana, Loki, Tempo en Mimir zelf als container apps via Terraform (monitoring.tf). De Quarkus-apps sturen via de Quarkus OpenTelemetry-extensie logs en traces naar Alloy (http://alloy). Alloy routeert traces naar Tempo en logs naar Loki, en scrapet de Quarkus-metrics elke 30 seconden naar Mimir. Opslag is Azure Blob Storage met 31 dagen retentie. Er staat een Quarkus-dashboard klaar in Grafana. Let op: de OTEL-variabelen staan in de terraform bij sommige services nog uitgecommentarieerd tot de dependencies kloppen.
+-->
+
+---
+
+# Ons alternatief: de Grafana-stack 🔥
+
+<div class="w-[58%] text-lg">
+
+- <span class="opacity-50">**Alloy**: collector, ontvangt OpenTelemetry en scrapet `/q/metrics`</span>
+- <span class="opacity-50">**Loki**: logs, **Tempo**: traces, **Mimir**: metrics</span>
+- <span class="opacity-50">**Grafana**: dashboards en zoeken op één plek. Eindelijk 😍</span>
+- Alles draait als container apps in dezelfde environment. Eigen data in Blob Storage, 31 dagen bewaard
+
+</div>
+
+<img src="/mon-stack-4.svg" class="absolute right-8 bottom-12 w-[26rem] rounded-xl" />
+
+<!--
+Wij hosten Grafana, Loki, Tempo en Mimir zelf als container apps via Terraform (monitoring.tf). De Quarkus-apps sturen via de Quarkus OpenTelemetry-extensie logs en traces naar Alloy (http://alloy). Alloy routeert traces naar Tempo en logs naar Loki, en scrapet de Quarkus-metrics elke 30 seconden naar Mimir. Opslag is Azure Blob Storage met 31 dagen retentie. Er staat een Quarkus-dashboard klaar in Grafana. Let op: de OTEL-variabelen staan in de terraform bij sommige services nog uitgecommentarieerd tot de dependencies kloppen.
+-->
+
+---
+layout: center
+class: text-center
+---
+
+# De app: een App Service
+
+<!--
+Naast de container apps bespreken we de frontend.
+-->
+
+---
+
+# App Service: de nette nginx-server van Azure
+
+<div class="w-[52%] text-base">
+
+- Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)
+
+</div>
+
+<img src="/app-service-1.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+App Service is een PaaS voor webapps. Wij draaien een nginx-container (web-app.tf) met public_network_access_enabled=false, VNet-integratie en een private endpoint. De frontend staat in Blob Storage die als mount in de container zit, net als de nginx-configuratie. Vanwege het bedrijfs-DNS gebruiken we WEBSITE_DNS_SERVER 168.63.129.16 zodat private zones resolven.
+-->
+
+---
+
+# App Service: de nette nginx-server van Azure
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
+- **VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten
+
+</div>
+
+<img src="/app-service-2.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+App Service is een PaaS voor webapps. Wij draaien een nginx-container (web-app.tf) met public_network_access_enabled=false, VNet-integratie en een private endpoint. De frontend staat in Blob Storage die als mount in de container zit, net als de nginx-configuratie. Vanwege het bedrijfs-DNS gebruiken we WEBSITE_DNS_SERVER 168.63.129.16 zodat private zones resolven.
+-->
+
+---
+
+# App Service: de nette nginx-server van Azure
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
+- <span class="opacity-50">**VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten</span>
+- **Private endpoint**: inkomend alleen via een privé-IP. Het internet blijft buiten 🚪
+
+</div>
+
+<img src="/app-service-3.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+App Service is een PaaS voor webapps. Wij draaien een nginx-container (web-app.tf) met public_network_access_enabled=false, VNet-integratie en een private endpoint. De frontend staat in Blob Storage die als mount in de container zit, net als de nginx-configuratie. Vanwege het bedrijfs-DNS gebruiken we WEBSITE_DNS_SERVER 168.63.129.16 zodat private zones resolven.
+-->
+
+---
+
+# App Service: de nette nginx-server van Azure
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
+- <span class="opacity-50">**VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten</span>
+- <span class="opacity-50">**Private endpoint**: inkomend alleen via een privé-IP. Het internet blijft buiten 🚪</span>
+- Custom domain, certificaten en container-registry-pull via het VNet
+
+</div>
+
+<img src="/app-service-4.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+App Service is een PaaS voor webapps. Wij draaien een nginx-container (web-app.tf) met public_network_access_enabled=false, VNet-integratie en een private endpoint. De frontend staat in Blob Storage die als mount in de container zit, net als de nginx-configuratie. Vanwege het bedrijfs-DNS gebruiken we WEBSITE_DNS_SERVER 168.63.129.16 zodat private zones resolven.
+-->
+
+---
+
+# App Service: de nette nginx-server van Azure
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
+- <span class="opacity-50">**VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten</span>
+- <span class="opacity-50">**Private endpoint**: inkomend alleen via een privé-IP. Het internet blijft buiten 🚪</span>
+- <span class="opacity-50">Custom domain, certificaten en container-registry-pull via het VNet</span>
+- **Bij ons**: nginx-container met de Angular-app, content en nginx-config via Blob Storage
+
+</div>
+
+<img src="/app-service-5.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+App Service is een PaaS voor webapps. Wij draaien een nginx-container (web-app.tf) met public_network_access_enabled=false, VNet-integratie en een private endpoint. De frontend staat in Blob Storage die als mount in de container zit, net als de nginx-configuratie. Vanwege het bedrijfs-DNS gebruiken we WEBSITE_DNS_SERVER 168.63.129.16 zodat private zones resolven.
+-->
+
+---
+
+# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
+
+<div class="w-[52%] text-base">
+
+- Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS
+
+</div>
+
+<img src="/app-dns-1.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. De records worden aangevraagd via het BMW-portal. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
+-->
+
+---
+
+# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS</span>
+- Dus: een **TXT** (`asuid.…`) en een **CNAME** naar `…azurewebsites.net` in de publieke zone `cloud.bmw`
+
+</div>
+
+<img src="/app-dns-2.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. De records worden aangevraagd via het BMW-portal. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
+-->
+
+---
+
+# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS</span>
+- <span class="opacity-50">Dus: een **TXT** (`asuid.…`) en een **CNAME** naar `…azurewebsites.net` in de publieke zone `cloud.bmw`</span>
+- Voor ons interne adres `360fp-<env>.azure.cloud.bmw` moest dus de publieke CNAME worden aangepast
+
+</div>
+
+<img src="/app-dns-3.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. De records worden aangevraagd via het BMW-portal. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
+-->
+
+---
+
+# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS</span>
+- <span class="opacity-50">Dus: een **TXT** (`asuid.…`) en een **CNAME** naar `…azurewebsites.net` in de publieke zone `cloud.bmw`</span>
+- <span class="opacity-50">Voor ons interne adres `360fp-<env>.azure.cloud.bmw` moest dus de publieke CNAME worden aangepast</span>
+- Het echte verkeer loopt daarna via de **private DNS zone** en het private endpoint
+
+</div>
+
+<img src="/app-dns-4.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. De records worden aangevraagd via het BMW-portal. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
+-->
+
+---
+
+# Front Door + nginx: de verkeersleiders 🚦
+
+<div class="w-2/5 text-base">
+
+- Publiek draait de applicatie via **Front Door**
+
+</div>
+
+<img src="/app-routes-1.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
+
+<!--
+In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
+-->
+
+---
+
+# Front Door + nginx: de verkeersleiders 🚦
+
+<div class="w-2/5 text-base">
+
+- <span class="opacity-50">Publiek draait de applicatie via **Front Door**</span>
+- Routes: `/` en `/portal-app/*` naar de App Service, `/<service>/*` naar de container apps
+
+</div>
+
+<img src="/app-routes-2.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
+
+<!--
+In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
+-->
+
+---
+
+# Front Door + nginx: de verkeersleiders 🚦
+
+<div class="w-2/5 text-base">
+
+- <span class="opacity-50">Publiek draait de applicatie via **Front Door**</span>
+- <span class="opacity-50">Routes: `/` en `/portal-app/*` naar de App Service, `/<service>/*` naar de container apps</span>
+- Front Door gebruikt Private Link naar beide
+
+</div>
+
+<img src="/app-routes-3.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
+
+<!--
+In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
+-->
+
+---
+
+# Front Door + nginx: de verkeersleiders 🚦
+
+<div class="w-2/5 text-base">
+
+- <span class="opacity-50">Publiek draait de applicatie via **Front Door**</span>
+- <span class="opacity-50">Routes: `/` en `/portal-app/*` naar de App Service, `/<service>/*` naar de container apps</span>
+- <span class="opacity-50">Front Door gebruikt Private Link naar beide</span>
+- **nginx** op de App Service proxyt API-calls naar de container apps. Het werkt. Niemand durft eraan te komen 🎉
+
+</div>
+
+<img src="/app-routes-4.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
+
+<!--
+In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
 -->
 
 ---
@@ -547,26 +940,7 @@ Overzicht: Front Door met WAF en Private Link voor internet, VPN en firewall-hub
 
 ---
 
-# Portal en Terraform: heen en weer
-
-<div class="w-[52%] text-base">
-
-- **Portal**: VNet, service principal, tijdelijke rollen en DNS-zones aanvragen
-- **Terraform**: subnets, NSG's, environment, apps en private endpoints
-- **Portal**: private DNS zones onboarden en endpoint-DNS-records aanmaken
-- **Tufin**: firewallregels aanvragen
-
-</div>
-
-<img src="/term-pingpong.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
-
-<!--
-Heen en weer: Niet alles kan in code. Het VNet, de service principal (met JIT Owner-rol) en de DNS-zones lopen via het BMW Manage Portal. Terraform doet de rest, maar halverwege de apply moeten private DNS zones en private endpoint-records weer handmatig in het portal. Het ging dus een paar keer heen en weer.
--->
-
----
-
-# Spiekbrief: Azure-termen
+# Spiekbrief voor de borrel 🍺
 
 <div class="text-sm leading-tight">
 
@@ -585,52 +959,4 @@ Heen en weer: Niet alles kan in code. Het VNet, de service principal (met JIT Ow
 
 <!--
 Spiekbrief om terug te kijken tijdens de Q&A.
--->
-
----
-layout: center
-class: text-center
----
-
-# Logging en monitoring
-
-<!--
-Volgend probleem: hoe kom je erachter wat je apps doen?
--->
-
----
-
-# Log Analytics en log stream: pijnlijk
-
-<div class="w-3/5">
-
-- Log Analytics: KQL leren, en logs verschijnen met vertraging
-- Log stream: alleen live, geen historie, geen zoeken
-- Logs, traces en metrics zitten op verschillende plekken
-
-</div>
-
-<img src="/mon-pijn.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
-
-<!--
-De ingebouwde Azure-oplossing werkte voor ons niet prettig. Log Analytics vraagt KQL-kennis en heeft ingestie-vertraging, de log stream is live-only. Voor een Java-developer die snel een fout wil zoeken is dat te omslachtig.
--->
-
----
-
-# Ons alternatief: Grafana-stack
-
-<div class="w-2/5 text-base">
-
-- **Alloy**: collector, ontvangt OpenTelemetry en scrapet `/q/metrics`
-- **Loki**: logs, **Tempo**: traces, **Mimir**: metrics
-- **Grafana**: dashboards en zoeken op één plek
-- Alles draait zelf als container app in dezelfde environment, data in Blob Storage (31 dagen)
-
-</div>
-
-<img src="/mon-stack.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
-
-<!--
-Wij hosten Grafana, Loki, Tempo en Mimir zelf als container apps via Terraform (monitoring.tf). De Quarkus-apps sturen via de Quarkus OpenTelemetry-extensie logs en traces naar Alloy (http://alloy). Alloy routeert traces naar Tempo en logs naar Loki, en scrapet de Quarkus-metrics elke 30 seconden naar Mimir. Opslag is Azure Blob Storage met 31 dagen retentie. Er staat een Quarkus-dashboard klaar in Grafana. Let op: de OTEL-variabelen staan in de terraform bij sommige services nog uitgecommentarieerd tot de dependencies kloppen.
 -->

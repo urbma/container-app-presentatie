@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
   <rect width="640" height="360" rx="16" fill="#000"/>
   <g fill="#f8fafc"><circle cx="60" cy="70" r="1.5"/><circle cx="150" cy="110" r="1.2"/><circle cx="300" cy="60" r="1.5"/><circle cx="420" cy="80" r="1.2"/><circle cx="590" cy="60" r="1.5"/><circle cx="610" cy="130" r="1.2"/><circle cx="240" cy="95" r="1"/></g>
-  <text x="320" y="36" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="20" font-weight="bold" fill="#f8fafc">Jij levert de container, Azure vliegt hem erheen</text>
+  <text x="320" y="36" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="20" font-weight="bold" fill="#f8fafc">"Works on my machine" – nu ook in productie</text>
 
   <!-- runway -->
   <path d="M0 300 H640" stroke="#334155" stroke-width="4"/>
@@ -14,7 +14,7 @@
   <path d="M232 244 H598" stroke="#0ea5e9" stroke-width="6"/>
   <!-- cockpit -->
   <path d="M540 200 H570 Q588 208 592 224 H540z" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
-  <text x="564" y="217" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#4ade80">auto</text>
+  <text x="564" y="217" text-anchor="middle" font-family="Consolas, monospace" font-size="8" fill="#4ade80">0 pods</text>
   <!-- cargo door open at rear (left) with ramp -->
   <path d="M230 205 L190 300 H236 L262 205z" fill="#475569"/>
   <rect x="258" y="205" width="40" height="52" fill="#0f172a"/>
@@ -37,6 +37,8 @@
   </g>
   <path d="M200 256 H228" stroke="#f8fafc" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>
 
+  <rect x="14" y="150" width="150" height="34" rx="8" fill="#f8fafc"/><path d="M50 184 L58 200 L68 184z" fill="#f8fafc"/>
+  <text x="89" y="165" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#000">$ docker push</text><text x="89" y="178" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#16a34a">...en dan Terraform 😅</text>
   <!-- dev -->
   <g stroke="#f8fafc" stroke-width="5" stroke-linecap="round" fill="none">
     <circle cx="60" cy="236" r="13" fill="#000"/>
@@ -45,5 +47,5 @@
   <circle cx="55" cy="233" r="2" fill="#f8fafc"/><circle cx="65" cy="233" r="2" fill="#f8fafc"/>
   <path d="M54 241 q6 5 12 0" fill="none" stroke="#f8fafc" stroke-width="2.5" stroke-linecap="round"/>
 
-  <text x="320" y="345" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="14" fill="#94a3b8">Geen vloot, geen piloten, geen vliegveld om te beheren.</text>
+  <text x="320" y="345" text-anchor="middle" font-family="Comic Sans MS, Arial, sans-serif" font-size="14" fill="#94a3b8">Geen piloten, geen vliegveld. Wel een stapel Terraform.</text>
 </svg>

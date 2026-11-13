@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="260" viewBox="0 0 400 260" font-family="Segoe UI, sans-serif">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#fff"/></marker></defs>
+<rect width="400" height="260" rx="14" fill="#000" stroke="#334155" stroke-width="2"/>
+<rect x="130" y="40" width="140" height="110" rx="12" fill="#0ea5e9"/>
+<text x="200" y="68" text-anchor="middle" font-size="14" font-weight="700" fill="#000">App Service</text>
+<rect x="148" y="82" width="104" height="24" rx="6" fill="#0f172a"/><text x="200" y="99" text-anchor="middle" font-size="11" fill="#22d3ee">jouw container</text>
+<text x="200" y="128" text-anchor="middle" font-size="10" fill="#000">OS, patches, schaling: Azure</text>
+<rect x="14" y="62" width="86" height="64" rx="10" fill="#0f172a" stroke="#38bdf8" stroke-dasharray="5 3"/>
+<text x="57" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="#38bdf8">VNet</text>
+<text x="57" y="100" text-anchor="middle" font-size="9.5" fill="#cbd5e1">uitgaand</text><text x="57" y="114" text-anchor="middle" font-size="9.5" fill="#cbd5e1">integratie</text>
+<path d="M130 94 H112" stroke="#fff" stroke-width="2" marker-end="url(#a)"/>
+<text x="200" y="232" text-anchor="middle" font-size="13" fill="#fff">PaaS voor webapps, privé ingericht</text>
+</svg>
