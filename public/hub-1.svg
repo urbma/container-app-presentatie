@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260" font-family="Segoe UI, Arial, sans-serif">
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#e2e8f0"/></marker>
+<marker id="y" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#facc15"/></marker></defs>
+<rect width="400" height="260" rx="14" fill="#000" stroke="#334155" stroke-width="2"/>
+<rect x="16" y="36" width="124" height="132" rx="10" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="8 5"/>
+<text x="78" y="54" text-anchor="middle" font-size="12" font-weight="bold" fill="#7dd3fc">Ons VNet</text>
+<text x="78" y="67" text-anchor="middle" font-size="9" fill="#94a3b8">(spoke)</text>
+<rect x="28" y="80" width="100" height="22" rx="5" fill="#22c55e"/><text x="78" y="95" text-anchor="middle" font-size="10" font-weight="bold" fill="#052e16">container-apps</text>
+<rect x="28" y="108" width="100" height="22" rx="5" fill="#0ea5e9"/><text x="78" y="123" text-anchor="middle" font-size="10" font-weight="bold" fill="#082f49">web-app</text>
+<rect x="28" y="136" width="100" height="22" rx="5" fill="#ec4899"/><text x="78" y="151" text-anchor="middle" font-size="10" font-weight="bold" fill="#500724">private-endpoints</text>
+<rect x="232" y="36" width="152" height="86" rx="10" fill="#0f172a" stroke="#f97316" stroke-width="2.5"/>
+<text x="308" y="54" text-anchor="middle" font-size="12" font-weight="bold" fill="#fb923c">Firewall Hub (BMW)</text>
+<g transform="translate(308 88)"><rect x="-30" y="-18" width="60" height="36" rx="3" fill="#ea580c"/>
+<path d="M-30 -6 H30 M-30 6 H30 M-10 -18 V-6 M10 -18 V-6 M-20 -6 V6 M0 -6 V6 M20 -6 V6 M-10 6 V18 M10 6 V18" stroke="#431407" stroke-width="2" fill="none"/></g>
+<path d="M142 100 H230" stroke="#e2e8f0" stroke-width="2.5" marker-end="url(#a)" marker-start="url(#a)"/>
+<text x="186" y="92" text-anchor="middle" font-size="10" fill="#94a3b8">peering</text>
+<text x="200" y="244" text-anchor="middle" font-size="13" fill="#e2e8f0">Ons VNet hangt aan de BMW-hub</text>
+</svg>

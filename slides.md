@@ -344,7 +344,7 @@ Eén commando: Een container app aanmaken is in het begin heel makkelijk. Voor e
 
 </div>
 
-<img src="/mig-makkelijk.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+<img src="/mig-https.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
 
 <!--
 Publieke URL en HTTPS: Out of the box krijg je een publieke URL met certificaat. Prima voor een demo, niet voor ons.
@@ -370,7 +370,7 @@ De eis: Bij ons mag een container app niet publiek bereikbaar zijn, alleen via e
 
 ---
 
-# De eis: "Maar niet op het internet, hè?"
+# Alleen via het VNet
 
 <div class="w-[52%]">
 
@@ -386,7 +386,7 @@ Geen publiek endpoint: Security-eis. Alles moet via het BMW-netwerk lopen.
 
 ---
 
-# De eis: "Maar niet op het internet, hè?"
+# Alleen via het VNet
 
 <div class="w-[52%]">
 
@@ -403,7 +403,7 @@ Container App Environment: De container apps leven in een environment, en die mo
 
 ---
 
-# De eis: "Maar niet op het internet, hè?"
+# Alleen via het VNet
 
 <div class="w-[52%]">
 
@@ -421,7 +421,7 @@ Subnets: Dat subnet moet voldoen aan eisen: voldoende groot (bij ons /27), gedel
 
 ---
 
-# De eis: "Maar niet op het internet, hè?"
+# Alleen via het VNet
 
 <div class="w-[52%]">
 
@@ -459,13 +459,103 @@ VNet en subnet: Een VNet is een eigen privé-netwerk. Subnets verdelen dat netwe
 
 ---
 
-# Azure-woordenboek 2: de poortwachters
+# Hub en spoke: ons VNet is geen eiland
 
 <div class="w-[52%] text-base">
 
-- **NSG**: de uitsmijter van je subnet. Staat jouw poort niet op de lijst, dan kom je er niet in
+- Ons VNet is een **spoke**: gepeerd met een centrale **firewall-hub** van BMW
+
+</div>
+
+<img src="/hub-1.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Uitleg begrippen: Hub-spoke is een manier om netwerken in Azure op te zetten. De hub is een centraal VNet met gedeelde voorzieningen: bij BMW de firewall, de VPN-verbinding naar het bedrijfsnetwerk en de toegang tot het internet. Een spoke is het VNet van een team of applicatie, zoals het onze, met alleen de eigen resources. Peering is de koppeling tussen twee VNets: ze zijn privé met elkaar verbonden, zonder het internet. Voordeel: beveiliging en verbindingen staan op één plek en elke spoke heeft geen eigen firewall of VPN nodig. Vergelijking: de hub is het hoofdkantoor met poort en receptie, de spokes zijn de afdelingen.
+
+Hub en spoke: Ons VNet is een spoke en gepeerd met de nieuwe firewall-hub van BMW (Gen2). De oude hub had proxies zonder authenticatie en shared services stonden niet in de hub, daarom is er een nieuwe firewall-hub gebouwd. Je controleert de peering met az network vnet peering list.
+-->
+
+---
+
+# Hub en spoke: ons VNet is geen eiland
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Ons VNet is een **spoke**: gepeerd met een centrale **firewall-hub** van BMW</span>
+- Elk subnet heeft een route table: `0.0.0.0/0` gaat naar de hub-firewall. Alles naar buiten komt langs de portier 🛂
+
+</div>
+
+<img src="/hub-2.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Route table: Aan alle subnets hangt een firewall route table met één default user-defined route: 0.0.0.0/0 naar de hub-firewall. Al het verkeer uit het VNet gaat dus eerst langs de firewall.
+-->
+
+---
+
+# Hub en spoke: ons VNet is geen eiland
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Ons VNet is een **spoke**: gepeerd met een centrale **firewall-hub** van BMW</span>
+- <span class="opacity-50">Elk subnet heeft een route table: `0.0.0.0/0` gaat naar de hub-firewall. Alles naar buiten komt langs de portier 🛂</span>
+- **Azure-diensten** (service tags van de regio's) staan standaard open
+
+</div>
+
+<img src="/hub-3.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Standaard open: In de hub-firewall staan de service tags van de Azure-regio's waar BMW hubs aanbiedt (en de geo-redundante failover-regio's) standaard op de whitelist, plus een lijst met standaard toegestane bestemmingen.
+-->
+
+---
+
+# Hub en spoke: ons VNet is geen eiland
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Ons VNet is een **spoke**: gepeerd met een centrale **firewall-hub** van BMW</span>
+- <span class="opacity-50">Elk subnet heeft een route table: `0.0.0.0/0` gaat naar de hub-firewall. Alles naar buiten komt langs de portier 🛂</span>
+- <span class="opacity-50">**Azure-diensten** (service tags van de regio's) staan standaard open</span>
+- De rest is dicht. Extra URL's aanvragen via het Manage Portal, goedkeuren in Tufin door vier ogen, en dan ±15 minuten wachten ⏳
+
+</div>
+
+<img src="/hub-4.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Whitelisting: Extra bestemmingen vraag je aan in het Manage Portal (Network, Add URL Whitelisting). Alleen URL's, geen IP's of IP-ranges. Standaard poort 80 en 443. Requester en approver mogen niet dezelfde persoon zijn (vier-ogenprincipe), de goedkeuring gebeurt in Tufin en de status wordt maar elk kwartier bijgewerkt. Wat de firewall blokkeert kun je opvragen met een URL-blocking report. Bron: BMW developer docs, Gen2-Hub concept.
+-->
+
+---
+
+# Azure-woordenboek 2: de NSG
+
+<div class="w-[52%] text-base">
+
+- **NSG**: de uitsmijker van je subnet. Een lijst met regels: wie mag erin en wie mag eruit
+- **Per regel instellen**: richting, bron, bestemming, poort, protocol, allow of deny
+- **Prioriteit**: laagste nummer wint. Zonder match gelden de standaardregels
+- Filtert op IP en poort, niet op URL. Voor URL's heb je de firewall in de hub
+- **Bij ons**: een NSG per subnet via een BMW-Terraformmodule. Container apps: inkomend 80, 443 en 8080, uitgaand alleen het nodige
+
+</div>
+
+<img src="/term-nsg.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+NSG (Network Security Group): Een lijst met firewallregels die je aan een subnet of een netwerkkaart hangt. Elke regel heeft een prioriteit (laagste nummer wint), richting (inbound of outbound), bron, bestemming, poort, protocol en actie (allow of deny). Bron en bestemming mogen IP-ranges zijn, maar ook service tags (zoals Internet, VirtualNetwork of AzureLoadBalancer) of application security groups. Azure voegt standaardregels toe: verkeer binnen het VNet is toegestaan, de Azure load balancer mag, inkomend vanaf het internet is dicht, en uitgaand is open. Een NSG is stateful: het antwoord op een toegestaan verzoek mag automatisch terug. Een NSG filtert alleen op laag 3 en 4 (IP en poort), niet op URL. Bij ons maakt Terraform (network-security.tf, BMW-NSG-module) een NSG per subnet: private-endpoints, database, service-bus, container-apps, storage en web-app. Het container-apps-subnet heeft inkomend 80, 443 en 8080 (prioriteit 190). Uitgaand staat open voor: Azure Monitor (443), HTTP/HTTPS (80, 443), NTP (UDP 123) en de Container Apps control plane (5671 en 5672). Twee regels heten nog AllowAKSControlPlane (UDP 1194, TCP 9000): een overblijfsel uit de AKS-tijd.
+-->
+
+---
+
+# Azure-woordenboek 3: route table en Tufin
+
+<div class="w-[52%] text-base">
+
 - **Route table** (UDR): het verkeersbord. Alles naar buiten (`0.0.0.0/0`) moet eerst langs de firewall
-- **Hub-spoke / peering**: ons VNet (spoke) hangt aan het BMW-hub, met VPN en firewall
 - **Tufin**: het loket voor firewallregels. Reken op wachttijd ⏳
 
 </div>
@@ -473,12 +563,12 @@ VNet en subnet: Een VNet is een eigen privé-netwerk. Subnets verdelen dat netwe
 <img src="/term-nsg.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
 
 <!--
-NSG en route table: Elk subnet krijgt een NSG. Uitgaand verkeer gaat via een route table naar de hub-firewall. Wil je naar buiten (bijv. een externe URL), dan moet er een firewallregel via Tufin komen.
+Route table en Tufin: Uitgaand verkeer gaat via een route table naar de hub-firewall. Wil je naar buiten (bijv. een externe URL), dan moet er een firewallregel via Tufin komen.
 -->
 
 ---
 
-# Azure-woordenboek 3: private endpoint
+# Azure-woordenboek 4: private endpoint
 
 <div class="w-[52%] text-base">
 
@@ -497,7 +587,7 @@ Private endpoint: Een deur naar een PaaS-dienst die alleen binnen het VNet besta
 
 ---
 
-# Azure-woordenboek 4: private DNS zone
+# Azure-woordenboek 5: private DNS zone
 
 <div class="w-[52%] text-base">
 
@@ -558,6 +648,8 @@ class: text-center
 ---
 
 # Logging en monitoring
+
+<img src="/ops-overwerkt.svg" class="mx-auto mt-8 h-72 rounded-xl shadow-xl" />
 
 <!--
 Volgend probleem: hoe kom je erachter wat je apps doen?
@@ -690,6 +782,8 @@ class: text-center
 ---
 
 # De app: een App Service
+
+<img src="/app-titel.svg" class="mx-auto mt-8 h-72 rounded-xl shadow-xl" />
 
 <!--
 Naast de container apps bespreken we de frontend.
@@ -915,7 +1009,7 @@ In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, e
 - <span class="opacity-50">Publiek draait de applicatie via **Front Door**</span>
 - <span class="opacity-50">Routes: `/` en `/portal-app/*` naar de App Service, `/<service>/*` naar de container apps</span>
 - <span class="opacity-50">Front Door gebruikt Private Link naar beide</span>
-- **nginx** op de App Service proxyt API-calls naar de container apps. Het werkt. Niemand durft eraan te komen 🎉
+- **nginx** op de App Service proxyt API-calls naar de container apps.
 
 </div>
 
