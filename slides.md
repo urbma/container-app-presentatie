@@ -16,7 +16,7 @@ duration: 35min
 
 # Van AKS naar ACA
 
-Ons migratieproject
+Ons migratieproject, of: wat komt er kijken bij een applicatie in de cloud?
 
 <div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
   Druk op spatie voor de volgende slide <carbon:arrow-right />
@@ -26,14 +26,95 @@ Ons migratieproject
 transition: fade
 ---
 
-# Wat zijn Azure Container Apps?
+# Waar gaat dit over?
+
+<div class="w-[52%] text-base">
+
+- De tests zijn groen, de build slaagt. Dan begint het deployen pas echt
+
+</div>
+
+<img src="/frame-1.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Doel van de presentatie: als developer denk je bij deployen vaak aan een pipeline en een container. In de praktijk zit het meeste werk in alles om je applicatie heen. Dat laten we zien aan de hand van ons migratietraject. Dit is geen Azure-training, maar een verhaal over wat je tegenkomt.
+-->
+
+---
+transition: fade
+---
+
+# Waar gaat dit over?
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">De tests zijn groen, de build slaagt. Dan begint het deployen pas echt</span>
+- Deze presentatie laat zien **wat er bij komt kijken** om een applicatie in de cloud te zetten
+
+</div>
+
+<img src="/frame-2.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Deze presentatie laat zien wat er bij komt kijken om een applicatie in de cloud te zetten
+-->
+
+---
+transition: fade
+---
+
+# Waar gaat dit over?
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">De tests zijn groen, de build slaagt. Dan begint het deployen pas echt</span>
+- <span class="opacity-50">Deze presentatie laat zien **wat er bij komt kijken** om een applicatie in de cloud te zetten</span>
+- Niet de code, maar alles eromheen: netwerk, security, DNS, logging en een frontend
+
+</div>
+
+<img src="/frame-3.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Niet de code, maar alles eromheen: netwerk, security, DNS, logging en een frontend
+-->
+
+---
+transition: fade
+---
+
+# Waar gaat dit over?
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">De tests zijn groen, de build slaagt. Dan begint het deployen pas echt</span>
+- <span class="opacity-50">Deze presentatie laat zien **wat er bij komt kijken** om een applicatie in de cloud te zetten</span>
+- <span class="opacity-50">Niet de code, maar alles eromheen: netwerk, security, DNS, logging en een frontend</span>
+- Aan de hand van onze migratie van AKS naar ACA. Met de littekens erbij
+
+</div>
+
+<img src="/frame-4.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Aan de hand van onze migratie van AKS naar ACA. Met de littekens erbij
+-->
+
+---
+transition: fade
+---
+
+# Wat is een Azure Container App?
 
 Een **serverless containerplatform** van Azure om containers te draaien zonder zelf een cluster te beheren.
 
 <img src="/aca-schip.svg" class="mx-auto mt-4 h-72 rounded-xl shadow-xl" />
 
 <!--
-Kernboodschap: Container Apps zit tussen App Service en AKS in. Je krijgt de flexibiliteit van containers, zonder de operationele last van een Kubernetes-cluster.
+Kernboodschap: Container Apps zit qua beheer tussen App Service en AKS in.
+- App Service: je geeft Azure je code of container en het platform regelt bijna alles. Weinig werk, maar ook weinig vrijheid (vooral één webapp per keer).
+- AKS: een volledig Kubernetes-cluster. Maximale vrijheid, maar jij beheert nodes, upgrades, ingress en manifests.
+- Container Apps: je draait gewoon containers (meerdere services, achtergrondjobs, schalen naar nul), maar Azure beheert het cluster eronder. Meer vrijheid dan App Service, minder werk dan AKS.
 -->
 
 ---
@@ -72,7 +153,12 @@ Automatisch schalen, ook naar nul: Schaal op HTTP-verkeer, queues of events. Gee
 <img src="/krijg-3.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
 
 <!--
-Ingress, HTTPS en revisions: Ingebouwd, zonder ingress controller of certificaatbeheer. Revisions maken gefaseerde uitrol en rollback eenvoudig.
+Ingress, HTTPS en revisions: ingebouwd, zonder ingress controller of certificaatbeheer.
+- Ingress = de voordeur van je app: de regels die bepalen hoe verkeer van buiten (of van andere apps) bij je container komt, op welke poort en met welke hostnaam.
+- Ingress controller: in Kubernetes (AKS) is ingress alleen een set regels. Je moet zelf een component installeren die ze uitvoert, meestal een nginx- of Traefik-controller of de Application Gateway-variant. Die moet je ook updaten en configureren. In Container Apps zit dat ingebouwd (Envoy), je zet alleen ingress aan.
+- Certificaten: HTTPS betekent dat de voordeur een certificaat nodig heeft. Bij AKS regel je dat vaak zelf, bijvoorbeeld met cert-manager en Let's Encrypt, inclusief verlengen. Container Apps kan een beheerd certificaat uitgeven en vernieuwen voor je eigen domein; een Azure-domein (*.azurecontainerapps.io) heeft er sowieso al een.
+- Eigen certificaten (BYO): kan ook. Je uploadt een certificaat (PFX/PEM) in de environment of verwijst naar een certificaat in Key Vault, en koppelt het aan je custom domain. Dan ben jij verantwoordelijk voor aanschaf en verlengen; met Key Vault en een managed identity kan Azure een vernieuwde versie automatisch oppikken. Dit is vaak de route bij interne of private domeinen, omdat een beheerd certificaat een publiek valideerbare domeinnaam nodig heeft.
+- Revisions maken gefaseerde uitrol en rollback eenvoudig.
 -->
 
 ---
@@ -88,6 +174,8 @@ Ingress, HTTPS en revisions: Ingebouwd, zonder ingress controller of certificaat
 
 <!--
 Betalen per gebruik: Je betaalt voor CPU en geheugen per seconde dat je app echt draait. Idle kost niets en het Consumption-plan heeft een gratis maandelijks tegoed.
+- Consumption (workload profile): Container Apps kent twee soorten environments. De oudere "Consumption-only" environment draait alles op gedeelde, door Azure beheerde capaciteit. De nieuwere "workload profiles" environment laat je per app kiezen: het Consumption-profiel (serverless, je betaalt per seconde CPU en geheugen en schaalt naar nul) of een dedicated profiel (vaste VM-grootte, reservering, ook GPU, je betaalt voor de VM's). Je kunt ze combineren in één environment.
+- Waarom een kleiner netwerk kan: bij Consumption-only vraagt Azure een groot subnet (minimaal /23, ruim 500 adressen), omdat de schaalruimte uit jouw subnet komt. Bij workload profiles kan het subnet veel kleiner (minimaal /27, 32 adressen), omdat de Consumption-capaciteit door Azure wordt beheerd en niet voor elke replica een eigen IP uit jouw subnet nodig is; alleen dedicated nodes tellen mee. Minder IP-ruimte van het bedrijfsnetwerk is in een gedeeld hub-spoke landschap een groot voordeel. Controleer de exacte subnetgroottes en IP-regels in de actuele Azure-documentatie.
 -->
 
 ---
@@ -104,6 +192,8 @@ Betalen per gebruik: Je betaalt voor CPU en geheugen per seconde dat je app echt
 
 <!--
 Beveiligd en betrouwbaar: Managed identities, netwerkisolatie en toegangsbeheer zijn ingebouwd. Microsoft geeft een SLA van 99,95% (volgens de productpagina; controleer de actuele SLA voor onze configuratie).
+
+Managed identity: een identiteit die Azure zelf aan je app geeft, vergelijkbaar met een servicemedewerker met een eigen pasje. Je app kan zich daarmee bij andere Azure-diensten (Key Vault, Storage, Service Bus, de container registry) aanmelden, zonder dat jij wachtwoorden, connection strings of secrets in je configuratie hoeft te zetten. Azure maakt en roteert de inloggegevens, jij geeft de identiteit alleen via een roltoewijzing (RBAC) de rechten die nodig zijn, bijvoorbeeld "lezen uit deze Key Vault". Er zijn twee soorten: system-assigned (hoort bij één app en verdwijnt met de app) en user-assigned (los aangemaakt en te delen tussen meerdere apps). Voordeel: geen secrets die kunnen lekken of verlopen.
 -->
 
 ---
@@ -166,7 +256,8 @@ Draait op Kubernetes: Maar die laag is volledig voor je verborgen.
 KEDA, Dapr en Envoy: Event-driven autoscaling, microservice-bouwblokken en ingress/traffic splitting zijn al ingebouwd.
 
 - KEDA (Kubernetes Event-driven Autoscaling): schaalt je app op basis van events, zoals HTTP-verkeer, de lengte van een queue (Service Bus, Kafka) of een cron-schema. Kan terug naar nul instances en weer op.
-- Dapr (Distributed Application Runtime): een sidecar met kant-en-klare bouwblokken voor microservices: service-to-service calls, pub/sub, state store, secrets en bindings. Je app praat via HTTP/gRPC met de sidecar, en die regelt de rest, ongeacht de onderliggende techniek. Optioneel in Container Apps.
+- Dapr (Distributed Application Runtime): een sidecar met kant-en-klare bouwblokken voor microservices: service-to-service calls, pub/sub, state store, secrets en bindings. Je app praat via HTTP/gRPC met de sidecar, en die regelt de rest, ongeacht de onderliggende techniek. Optioneel in Container Apps en wij gebruiken het niet (geen Dapr in onze terraform); het hoort wel bij wat het platform biedt.
+  Had Dapr ons iets opgeleverd? Een beetje: Service Bus, Key Vault en Storage via vaste API's in plaats van SDK's, plus mTLS en retries tussen services. Maar Quarkus heeft daar al goede extensies voor, Dapr voegt een sidecar en extra abstractielaag toe, en onze pijn zat in het netwerk, dat lost Dapr niet op.
 - Envoy: een proxy die het inkomende verkeer afhandelt: ingress, HTTPS/TLS-terminatie, load balancing en traffic splitting tussen revisions (bijv. 90/10 uitrol).
 
 Allemaal open source en door Azure beheerd, dus wij hoeven ze niet zelf te installeren of te upgraden.
@@ -184,6 +275,17 @@ Allemaal open source en door Azure beheerd, dus wij hoeven ze niet zelf te insta
 
 <!--
 Container Apps Environment: Apps leven samen in een environment: een gedeeld netwerk- en logboundary.
+
+Wat de environment nog meer biedt dan wij gebruiken:
+- Workload profiles en GPU: dedicated capaciteit naast Consumption.
+- Dapr-componenten en gedeelde configuratie: environment-brede bouwblokken (pub/sub, state, secrets).
+- Environment-brede mTLS en peer-to-peer encryptie tussen apps.
+- Jobs: geplande of eenmalige taken naast de apps.
+- Managed certificaten en eigen certificaten per environment, te koppelen aan custom domains.
+- Azure Files-mounts als gedeelde opslag voor meerdere apps.
+- Zone redundancy voor hogere beschikbaarheid, en meer logbestemmingen (Log Analytics, Event Hubs).
+
+Certificaten: bij ons terminate Front Door en de App Service het HTTPS-verkeer, dus de environment hoeft ze niet te hebben. Je hebt ze op de environment nodig zodra clients rechtstreeks met de container app praten via een eigen domeinnaam, bijvoorbeeld een publieke API zonder Front Door ervoor, of intern verkeer dat toch over HTTPS en met een bedrijfsdomein moet. Ook als je end-to-end TLS tot in de app wilt, in plaats van versleuteling die bij Front Door eindigt. Controleer dit tegen de Azure-documentatie.
 -->
 
 ---
@@ -211,7 +313,7 @@ class: text-center
 <img src="/aks-fire.svg" class="mx-auto mt-8 h-72 rounded-xl shadow-xl" />
 
 <!--
-Titelslide: AKS was stabiel, dat is niet het probleem. Maar de kosten (nodes 24/7) en het onderhoud, vooral de zware cluster upgrades en migraties, zijn een berg werk voor drie workloads.
+Titelslide: AKS was stabiel, dat is niet het probleem. Maar de kosten (nodes 24/7) en het onderhoud, vooral de zware cluster upgrades en migraties, zijn een berg werk voor maar vier workloads (notification, external notification, portal en translation service).
 -->
 
 ---
@@ -231,12 +333,12 @@ Zelf het cluster onderhouden: Kubernetes-versie upgrades, node image updates en 
 # Waarom weg van AKS?
 
 - <span class="opacity-50">Zelf het cluster onderhouden</span>
-- Kosten voor 2 microservices en 1 app
+- Kosten voor 4 workloads
 
 <img src="/aks-kosten.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
 
 <!--
-Kosten voor 2 microservices en 1 app: Nodes draaien 24/7, ook als er niets gebeurt. Voor drie workloads betalen we voor veel capaciteit die we niet gebruiken.
+Kosten voor vier workloads: Nodes draaien 24/7, ook als er niets gebeurt. Voor vier workloads betalen we voor veel capaciteit die we niet gebruiken.
 -->
 
 ---
@@ -247,7 +349,7 @@ dragPos:
 # Waarom weg van AKS?
 
 - <span class="opacity-50">Zelf het cluster onderhouden</span>
-- <span class="opacity-50">Kosten voor 2 microservices en 1 app</span>
+- <span class="opacity-50">Kosten voor 4 workloads</span>
 - Veel zelf inrichten
 
 <img src="/aks-inrichten.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
@@ -261,7 +363,7 @@ Veel zelf inrichten: Ingress controller, certificaten, monitoring en autoscaling
 # Waarom weg van AKS?
 
 - <span class="opacity-50">Zelf het cluster onderhouden</span>
-- <span class="opacity-50">Kosten voor 2 microservices en 1 app</span>
+- <span class="opacity-50">Kosten voor 4 workloads</span>
 - <span class="opacity-50">Veel zelf inrichten</span>
 - Steile leercurve
 
@@ -276,7 +378,7 @@ Steile leercurve: YAML, Helm, networking en RBAC: veel Kubernetes-kennis voor ee
 # Waarom weg van AKS?
 
 - <span class="opacity-50">Zelf het cluster onderhouden</span>
-- <span class="opacity-50">Kosten voor 2 microservices en 1 app</span>
+- <span class="opacity-50">Kosten voor 4 workloads</span>
 - <span class="opacity-50">Veel zelf inrichten</span>
 - <span class="opacity-50">Steile leercurve</span>
 - Kennis bij weinig mensen
@@ -285,6 +387,7 @@ Steile leercurve: YAML, Helm, networking en RBAC: veel Kubernetes-kennis voor ee
 
 <!--
 Kennis bij weinig mensen: Zonder infra team hangt het cluster af van een of twee mensen (bus factor).
+Bus factor: het aantal mensen dat door een bus geraakt (of ziek, op vakantie of vertrokken) mag worden voordat het project stilvalt. Is de bus factor 1, dan kan maar één persoon het cluster upgraden of repareren. Hoe lager, hoe kwetsbaarder het team.
 -->
 
 ---
@@ -292,7 +395,7 @@ Kennis bij weinig mensen: Zonder infra team hangt het cluster af van een of twee
 # Waarom weg van AKS?
 
 - <span class="opacity-50">Zelf het cluster onderhouden</span>
-- <span class="opacity-50">Kosten voor 2 microservices en 1 app</span>
+- <span class="opacity-50">Kosten voor 4 workloads</span>
 - <span class="opacity-50">Veel zelf inrichten</span>
 - <span class="opacity-50">Steile leercurve</span>
 - <span class="opacity-50">Kennis bij weinig mensen</span>
@@ -647,6 +750,261 @@ layout: center
 class: text-center
 ---
 
+# De app: een App Service
+
+<img src="/app-titel.svg" class="mx-auto mt-8 h-72 rounded-xl shadow-xl" />
+
+<!--
+Naast de container apps bespreken we de frontend.
+-->
+
+---
+
+# App Service: de nette nginx-server van Azure
+
+<div class="w-[52%] text-base">
+
+- Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)
+
+</div>
+
+<img src="/app-service-1.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+App Service is een PaaS voor webapps: jij levert code of een container, Azure beheert het besturingssysteem, de patches en het schalen. Voor ons is het de plek waar de frontend draait, een nginx-container (web-app.tf). Het is de 'saaie' tegenhanger van de container apps: minder knoppen, minder verrassingen.
+-->
+
+---
+
+# App Service: de nette nginx-server van Azure
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
+- **VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten
+
+</div>
+
+<img src="/app-service-2.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+VNet-integratie regelt het uitgaande verkeer: de App Service krijgt een poot in ons VNet en kan daarmee bij private diensten zoals de container apps, de storage en de registry. Bij ons staat vnet_route_all_enabled aan, dus al het uitgaande verkeer gaat via het VNet. Let op: dit zegt niets over inkomend verkeer, dat is het private endpoint op de volgende slide. Vanwege het bedrijfs-DNS gebruiken we ook WEBSITE_DNS_SERVER 168.63.129.16, anders resolven de private zones niet.
+-->
+
+---
+
+# App Service: de nette nginx-server van Azure
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
+- <span class="opacity-50">**VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten</span>
+- **Private endpoint**: inkomend alleen via een privé-IP. Het internet blijft buiten 🚪
+
+</div>
+
+<img src="/app-service-3.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Het private endpoint regelt het inkomende verkeer.
+
+Wat het is: een netwerkkaart met een privé-IP-adres in ons eigen VNet (subnet voor private endpoints), die verbonden is met de App Service. Vanuit het netwerk lijkt de web app dus gewoon een machine op een intern adres.
+
+Waarom: standaard heeft een App Service een publiek adres. Wij zetten public_network_access_enabled=false, dus vanaf het internet komt niemand binnen. Het enige pad naar binnen is het privé-IP.
+
+Wie komt er dan wel binnen:
+- Front Door via Private Link: Front Door krijgt een eigen, goedgekeurde verbinding naar de web app (front-door.tf, private_link naar de web app). Zo bereiken internetgebruikers de app zonder dat de App Service zelf publiek is.
+- Intranetgebruikers via VPN of het bedrijfsnetwerk, door het hub-spoke netwerk naar het privé-IP.
+
+DNS: de naam van de web app moet naar dat privé-IP wijzen, anders verwijst hij naar het publieke adres en wordt de verbinding geweigerd. Dat doet de private DNS zone (zie de glossary-slide).
+
+Let op: VNet-integratie (uitgaand, vorige slide) en private endpoint (inkomend) zijn twee aparte dingen. Je hebt meestal beide nodig, en het is een veelgemaakte denkfout om te denken dat het ene het andere dekt.
+-->
+
+---
+
+# App Service: de nette nginx-server van Azure
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
+- <span class="opacity-50">**VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten</span>
+- <span class="opacity-50">**Private endpoint**: inkomend alleen via een privé-IP. Het internet blijft buiten 🚪</span>
+- Custom domain, certificaten en container-registry-pull via het VNet
+
+</div>
+
+<img src="/app-service-4.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Custom domain en certificaat: bij ons komt het certificaat uit Key Vault en wordt gekoppeld aan de App Service (azurerm_app_service_certificate en binding), zodat de intranet-domeinnaam met HTTPS werkt. De container-image trekken we uit het gedeelde ACR (in een andere subscription) via een eigen private endpoint op de registry, met de user-assigned managed identity van de web app. Dus geen publiek internet, geen wachtwoord.
+-->
+
+---
+
+# App Service: de nette nginx-server van Azure
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
+- <span class="opacity-50">**VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten</span>
+- <span class="opacity-50">**Private endpoint**: inkomend alleen via een privé-IP. Het internet blijft buiten 🚪</span>
+- <span class="opacity-50">Custom domain, certificaten en container-registry-pull via het VNet</span>
+- **Bij ons**: nginx-container met de Angular-app, content en nginx-config via Blob Storage
+
+</div>
+
+<img src="/app-service-5.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Bij ons: een nginx-container met de Angular-app. De frontend-bestanden en de nginx-configuratie staan in Blob Storage en worden als mount in de container gezet (/usr/share/nginx/html en /etc/nginx/nginx-location). Een nieuwe versie uitrollen betekent dus bestanden in de storage zetten, zonder nieuwe image te bouwen. Nginx proxyt ook de API-calls naar de container apps (zie de Front Door-slides).
+-->
+
+---
+
+# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
+
+<div class="w-[52%] text-base">
+
+- Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS
+
+</div>
+
+<img src="/app-dns-1.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. Records kun je niet zelf aanmaken: ze kunnen alleen worden aangevraagd via een ITSM service request. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
+-->
+
+---
+
+# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS</span>
+- Dus: een **TXT** (`asuid.…`) en een **CNAME** naar `…azurewebsites.net` in de publieke zone `cloud.bmw`
+
+</div>
+
+<img src="/app-dns-2.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. Records kun je niet zelf aanmaken: ze kunnen alleen worden aangevraagd via een ITSM service request. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
+-->
+
+---
+
+# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS</span>
+- <span class="opacity-50">Dus: een **TXT** (`asuid.…`) en een **CNAME** naar `…azurewebsites.net` in de publieke zone `cloud.bmw`</span>
+- Voor ons interne adres `360fp-<env>.azure.cloud.bmw` moest dus de publieke CNAME worden aangepast
+
+</div>
+
+<img src="/app-dns-3.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. Records kun je niet zelf aanmaken: ze kunnen alleen worden aangevraagd via een ITSM service request. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
+-->
+
+---
+
+# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
+
+<div class="w-[52%] text-base">
+
+- <span class="opacity-50">Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS</span>
+- <span class="opacity-50">Dus: een **TXT** (`asuid.…`) en een **CNAME** naar `…azurewebsites.net` in de publieke zone `cloud.bmw`</span>
+- <span class="opacity-50">Voor ons interne adres `360fp-<env>.azure.cloud.bmw` moest dus de publieke CNAME worden aangepast</span>
+- Het echte verkeer loopt daarna via de **private DNS zone** en het private endpoint
+
+</div>
+
+<img src="/app-dns-4.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
+
+<!--
+Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. Records kun je niet zelf aanmaken: ze kunnen alleen worden aangevraagd via een ITSM service request. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
+-->
+
+---
+
+# Front Door + nginx: de verkeersleiders 🚦
+
+<div class="w-2/5 text-base">
+
+- Publiek draait de applicatie via **Front Door**
+
+</div>
+
+<img src="/app-routes-1.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
+
+<!--
+In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
+-->
+
+---
+
+# Front Door + nginx: de verkeersleiders 🚦
+
+<div class="w-2/5 text-base">
+
+- <span class="opacity-50">Publiek draait de applicatie via **Front Door**</span>
+- Routes: `/` en `/portal-app/*` naar de App Service, `/<service>/*` naar de container apps
+
+</div>
+
+<img src="/app-routes-2.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
+
+<!--
+In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
+-->
+
+---
+
+# Front Door + nginx: de verkeersleiders 🚦
+
+<div class="w-2/5 text-base">
+
+- <span class="opacity-50">Publiek draait de applicatie via **Front Door**</span>
+- <span class="opacity-50">Routes: `/` en `/portal-app/*` naar de App Service, `/<service>/*` naar de container apps</span>
+- Front Door gebruikt Private Link naar beide
+
+</div>
+
+<img src="/app-routes-3.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
+
+<!--
+In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
+-->
+
+---
+
+# Front Door + nginx: de verkeersleiders 🚦
+
+<div class="w-2/5 text-base">
+
+- <span class="opacity-50">Publiek draait de applicatie via **Front Door**</span>
+- <span class="opacity-50">Routes: `/` en `/portal-app/*` naar de App Service, `/<service>/*` naar de container apps</span>
+- <span class="opacity-50">Front Door gebruikt Private Link naar beide</span>
+- **nginx** op de App Service proxyt API-calls naar de container apps.
+
+</div>
+
+<img src="/app-routes-4.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
+
+<!--
+In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
+-->
+
+---
+layout: center
+class: text-center
+---
+
 # Logging en monitoring
 
 <img src="/ops-overwerkt.svg" class="mx-auto mt-8 h-72 rounded-xl shadow-xl" />
@@ -781,255 +1139,29 @@ layout: center
 class: text-center
 ---
 
-# De app: een App Service
-
-<img src="/app-titel.svg" class="mx-auto mt-8 h-72 rounded-xl shadow-xl" />
-
-<!--
-Naast de container apps bespreken we de frontend.
--->
-
----
-
-# App Service: de nette nginx-server van Azure
-
-<div class="w-[52%] text-base">
-
-- Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)
-
-</div>
-
-<img src="/app-service-1.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
-
-<!--
-App Service is een PaaS voor webapps. Wij draaien een nginx-container (web-app.tf) met public_network_access_enabled=false, VNet-integratie en een private endpoint. De frontend staat in Blob Storage die als mount in de container zit, net als de nginx-configuratie. Vanwege het bedrijfs-DNS gebruiken we WEBSITE_DNS_SERVER 168.63.129.16 zodat private zones resolven.
--->
-
----
-
-# App Service: de nette nginx-server van Azure
-
-<div class="w-[52%] text-base">
-
-- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
-- **VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten
-
-</div>
-
-<img src="/app-service-2.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
-
-<!--
-App Service is een PaaS voor webapps. Wij draaien een nginx-container (web-app.tf) met public_network_access_enabled=false, VNet-integratie en een private endpoint. De frontend staat in Blob Storage die als mount in de container zit, net als de nginx-configuratie. Vanwege het bedrijfs-DNS gebruiken we WEBSITE_DNS_SERVER 168.63.129.16 zodat private zones resolven.
--->
-
----
-
-# App Service: de nette nginx-server van Azure
-
-<div class="w-[52%] text-base">
-
-- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
-- <span class="opacity-50">**VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten</span>
-- **Private endpoint**: inkomend alleen via een privé-IP. Het internet blijft buiten 🚪
-
-</div>
-
-<img src="/app-service-3.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
-
-<!--
-App Service is een PaaS voor webapps. Wij draaien een nginx-container (web-app.tf) met public_network_access_enabled=false, VNet-integratie en een private endpoint. De frontend staat in Blob Storage die als mount in de container zit, net als de nginx-configuratie. Vanwege het bedrijfs-DNS gebruiken we WEBSITE_DNS_SERVER 168.63.129.16 zodat private zones resolven.
--->
-
----
-
-# App Service: de nette nginx-server van Azure
-
-<div class="w-[52%] text-base">
-
-- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
-- <span class="opacity-50">**VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten</span>
-- <span class="opacity-50">**Private endpoint**: inkomend alleen via een privé-IP. Het internet blijft buiten 🚪</span>
-- Custom domain, certificaten en container-registry-pull via het VNet
-
-</div>
-
-<img src="/app-service-4.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
-
-<!--
-App Service is een PaaS voor webapps. Wij draaien een nginx-container (web-app.tf) met public_network_access_enabled=false, VNet-integratie en een private endpoint. De frontend staat in Blob Storage die als mount in de container zit, net als de nginx-configuratie. Vanwege het bedrijfs-DNS gebruiken we WEBSITE_DNS_SERVER 168.63.129.16 zodat private zones resolven.
--->
-
----
-
-# App Service: de nette nginx-server van Azure
-
-<div class="w-[52%] text-base">
-
-- <span class="opacity-50">Beheerd webhosting-platform: jij levert code of een container, Azure doet het saaie werk (OS, patches, schaling)</span>
-- <span class="opacity-50">**VNet-integratie**: de app kan naar buiten het VNet in, dus ook bij alle private diensten</span>
-- <span class="opacity-50">**Private endpoint**: inkomend alleen via een privé-IP. Het internet blijft buiten 🚪</span>
-- <span class="opacity-50">Custom domain, certificaten en container-registry-pull via het VNet</span>
-- **Bij ons**: nginx-container met de Angular-app, content en nginx-config via Blob Storage
-
-</div>
-
-<img src="/app-service-5.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
-
-<!--
-App Service is een PaaS voor webapps. Wij draaien een nginx-container (web-app.tf) met public_network_access_enabled=false, VNet-integratie en een private endpoint. De frontend staat in Blob Storage die als mount in de container zit, net als de nginx-configuratie. Vanwege het bedrijfs-DNS gebruiken we WEBSITE_DNS_SERVER 168.63.129.16 zodat private zones resolven.
--->
-
----
-
-# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
-
-<div class="w-[52%] text-base">
-
-- Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS
-
-</div>
-
-<img src="/app-dns-1.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
-
-<!--
-Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. De records worden aangevraagd via het BMW-portal. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
--->
-
----
-
-# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
-
-<div class="w-[52%] text-base">
-
-- <span class="opacity-50">Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS</span>
-- Dus: een **TXT** (`asuid.…`) en een **CNAME** naar `…azurewebsites.net` in de publieke zone `cloud.bmw`
-
-</div>
-
-<img src="/app-dns-2.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
-
-<!--
-Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. De records worden aangevraagd via het BMW-portal. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
--->
-
----
-
-# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
-
-<div class="w-[52%] text-base">
-
-- <span class="opacity-50">Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS</span>
-- <span class="opacity-50">Dus: een **TXT** (`asuid.…`) en een **CNAME** naar `…azurewebsites.net` in de publieke zone `cloud.bmw`</span>
-- Voor ons interne adres `360fp-<env>.azure.cloud.bmw` moest dus de publieke CNAME worden aangepast
-
-</div>
-
-<img src="/app-dns-3.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
-
-<!--
-Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. De records worden aangevraagd via het BMW-portal. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
--->
-
----
-
-# De DNS-hack: een publieke CNAME voor een interne naam 🕵️
-
-<div class="w-[52%] text-base">
-
-- <span class="opacity-50">Een custom domain op een App Service vraagt **domeinvalidatie** in de *publieke* DNS</span>
-- <span class="opacity-50">Dus: een **TXT** (`asuid.…`) en een **CNAME** naar `…azurewebsites.net` in de publieke zone `cloud.bmw`</span>
-- <span class="opacity-50">Voor ons interne adres `360fp-<env>.azure.cloud.bmw` moest dus de publieke CNAME worden aangepast</span>
-- Het echte verkeer loopt daarna via de **private DNS zone** en het private endpoint
-
-</div>
-
-<img src="/app-dns-4.svg" class="absolute right-12 bottom-16 w-96 rounded-xl" />
-
-<!--
-Dit was de lastigste stap: App Service wil bewijs van eigenaarschap voor het domein. Dat kan alleen via TXT en CNAME in de publieke DNS, terwijl onze app volledig privé is. De records worden aangevraagd via het BMW-portal. Daarna binden we het domein en het certificaat uit de Key Vault (azurerm_app_service_certificate_binding). Zie README stap 23.
--->
-
----
-
-# Front Door + nginx: de verkeersleiders 🚦
-
-<div class="w-2/5 text-base">
-
-- Publiek draait de applicatie via **Front Door**
-
-</div>
-
-<img src="/app-routes-1.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
-
-<!--
-In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
--->
-
----
-
-# Front Door + nginx: de verkeersleiders 🚦
-
-<div class="w-2/5 text-base">
-
-- <span class="opacity-50">Publiek draait de applicatie via **Front Door**</span>
-- Routes: `/` en `/portal-app/*` naar de App Service, `/<service>/*` naar de container apps
-
-</div>
-
-<img src="/app-routes-2.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
-
-<!--
-In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
--->
-
----
-
-# Front Door + nginx: de verkeersleiders 🚦
-
-<div class="w-2/5 text-base">
-
-- <span class="opacity-50">Publiek draait de applicatie via **Front Door**</span>
-- <span class="opacity-50">Routes: `/` en `/portal-app/*` naar de App Service, `/<service>/*` naar de container apps</span>
-- Front Door gebruikt Private Link naar beide
-
-</div>
-
-<img src="/app-routes-3.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
-
-<!--
-In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
--->
-
----
-
-# Front Door + nginx: de verkeersleiders 🚦
-
-<div class="w-2/5 text-base">
-
-- <span class="opacity-50">Publiek draait de applicatie via **Front Door**</span>
-- <span class="opacity-50">Routes: `/` en `/portal-app/*` naar de App Service, `/<service>/*` naar de container apps</span>
-- <span class="opacity-50">Front Door gebruikt Private Link naar beide</span>
-- **nginx** op de App Service proxyt API-calls naar de container apps.
-
-</div>
-
-<img src="/app-routes-4.svg" class="absolute right-8 bottom-12 w-[34rem] rounded-xl" />
-
-<!--
-In front-door.tf staan origin groups en routes: web_app voor / en /portal-app, en aparte routes voor portal-service, notification-service, external-notification-service en translation-service. Intern gebruikt nginx (config/<env>/web-app/nginx-location.conf) proxy_pass naar de container apps. De App Service heeft VNet-integratie met vnet_route_all, dus bereikt hij de interne environment.
--->
-
----
-layout: center
-class: text-center
----
-
 # Wat werd het bij ons?
 
 <img src="/aca-landschap.svg" class="mx-auto mt-4 h-[26rem] rounded-xl shadow-xl" />
 
 <!--
 Overzicht: Front Door met WAF en Private Link voor internet, VPN en firewall-hub voor intranet, een spoke VNet met per dienst een subnet met NSG, private endpoints voor Service Bus, Storage, Key Vault en registry, en private DNS zones.
+-->
+
+---
+
+# Wat nemen we mee?
+
+<div class="w-[85%] text-lg">
+
+- Je applicatie is maar een deel van het verhaal. De rest is **netwerk, security en beheer**
+- Praat vroeg met de mensen die het netwerk en de firewalls beheren. Zij hebben de sleutels
+- Leg alles vast als Infrastructure as Code, ook de plekken waar je liever klikt
+- "Serverless" betekent niet dat er geen servers zijn, maar dat het niet meer jouw probleem is. Het netwerk blijft het wel
+
+</div>
+
+<!--
+Afsluiting. Kernboodschap: deployen naar de cloud is meer dan een container starten. Voor developers zit de verrassing meestal in het netwerk en de security, niet in de applicatie zelf.
 -->
 
 ---
