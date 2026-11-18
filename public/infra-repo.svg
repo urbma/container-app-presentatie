@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" font-family="Verdana, sans-serif">
+<rect width="960" height="520" rx="14" fill="#000" stroke="#334155"/>
+<rect x="20" y="20" width="270" height="180" rx="12" fill="#0f172a" stroke="#fb923c" stroke-width="2.5"/>
+<text x="36" y="48" font-size="16" fill="#fb923c" font-weight="bold" font-family="monospace">📁 Deployment/</text>
+<text x="36" y="68" font-size="11" fill="#94a3b8" font-style="italic">pipelines</text>
+<rect x="36" y="70" width="116" height="26" rx="13" fill="#fb923c" opacity=".22" stroke="#fb923c"/>
+<text x="94.0" y="87" font-size="10.5" fill="#e2e8f0" text-anchor="middle">Jenkinsfile TEST</text>
+<rect x="160" y="70" width="116" height="26" rx="13" fill="#fb923c" opacity=".22" stroke="#fb923c"/>
+<text x="218.0" y="87" font-size="10.5" fill="#e2e8f0" text-anchor="middle">Jenkinsfile INT</text>
+<rect x="36" y="106" width="116" height="26" rx="13" fill="#fb923c" opacity=".22" stroke="#fb923c"/>
+<text x="94.0" y="123" font-size="10.5" fill="#e2e8f0" text-anchor="middle">Jenkinsfile PROD</text>
+<rect x="160" y="106" width="116" height="26" rx="13" fill="#fb923c" opacity=".22" stroke="#fb923c"/>
+<text x="218.0" y="123" font-size="10.5" fill="#e2e8f0" text-anchor="middle">Jenkinsfile SHARED</text>
+<text x="36" y="168" font-size="12" fill="#cbd5e1">Eén pipeline per omgeving</text>
+<rect x="20" y="220" width="270" height="280" rx="12" fill="#0f172a" stroke="#c084fc" stroke-width="2.5"/>
+<text x="36" y="248" font-size="14.5" fill="#c084fc" font-weight="bold" font-family="monospace">📁 azure-terraform-shared/</text>
+<text x="36" y="268" font-size="11" fill="#94a3b8" font-style="italic">gedeeld door alle omgevingen</text>
+<rect x="40" y="290" width="230" height="26" rx="13" fill="#c084fc" opacity=".22" stroke="#c084fc"/>
+<text x="155.0" y="307" font-size="12" fill="#e2e8f0" text-anchor="middle">container registry</text>
+<rect x="40" y="330" width="230" height="26" rx="13" fill="#c084fc" opacity=".22" stroke="#c084fc"/>
+<text x="155.0" y="347" font-size="12" fill="#e2e8f0" text-anchor="middle">key vault</text>
+<rect x="40" y="370" width="230" height="26" rx="13" fill="#c084fc" opacity=".22" stroke="#c084fc"/>
+<text x="155.0" y="387" font-size="12" fill="#e2e8f0" text-anchor="middle">log analytics</text>
+<rect x="40" y="410" width="230" height="26" rx="13" fill="#c084fc" opacity=".22" stroke="#c084fc"/>
+<text x="155.0" y="427" font-size="12" fill="#e2e8f0" text-anchor="middle">alerts</text>
+<rect x="310" y="20" width="630" height="480" rx="12" fill="#0f172a" stroke="#22d3ee" stroke-width="2.5"/>
+<text x="326" y="48" font-size="16" fill="#22d3ee" font-weight="bold" font-family="monospace">📁 azure-terraform-environments/</text>
+<text x="326" y="68" font-size="11" fill="#94a3b8" font-style="italic">één codebase, drie omgevingen</text>
+<text x="330" y="92" font-size="13" fill="#38bdf8" font-weight="bold">Netwerk</text>
+<rect x="330" y="102" width="184" height="26" rx="13" fill="#38bdf8" opacity=".22" stroke="#38bdf8"/>
+<text x="422.0" y="119" font-size="11.5" fill="#e2e8f0" text-anchor="middle">subnets</text>
+<rect x="330" y="136" width="184" height="26" rx="13" fill="#38bdf8" opacity=".22" stroke="#38bdf8"/>
+<text x="422.0" y="153" font-size="11.5" fill="#e2e8f0" text-anchor="middle">NSG's</text>
+<rect x="330" y="170" width="184" height="26" rx="13" fill="#38bdf8" opacity=".22" stroke="#38bdf8"/>
+<text x="422.0" y="187" font-size="11.5" fill="#e2e8f0" text-anchor="middle">DNS-zones</text>
+<text x="530" y="92" font-size="13" fill="#4ade80" font-weight="bold">Rekenkracht</text>
+<rect x="530" y="102" width="184" height="26" rx="13" fill="#4ade80" opacity=".22" stroke="#4ade80"/>
+<text x="622.0" y="119" font-size="11.5" fill="#e2e8f0" text-anchor="middle">container apps (4)</text>
+<rect x="530" y="136" width="184" height="26" rx="13" fill="#4ade80" opacity=".22" stroke="#4ade80"/>
+<text x="622.0" y="153" font-size="11.5" fill="#e2e8f0" text-anchor="middle">environment</text>
+<rect x="530" y="170" width="184" height="26" rx="13" fill="#4ade80" opacity=".22" stroke="#4ade80"/>
+<text x="622.0" y="187" font-size="11.5" fill="#e2e8f0" text-anchor="middle">web app</text>
+<text x="730" y="92" font-size="13" fill="#f472b6" font-weight="bold">Toegang</text>
+<rect x="730" y="102" width="184" height="26" rx="13" fill="#f472b6" opacity=".22" stroke="#f472b6"/>
+<text x="822.0" y="119" font-size="11.5" fill="#e2e8f0" text-anchor="middle">Front Door + WAF</text>
+<rect x="730" y="136" width="184" height="26" rx="13" fill="#f472b6" opacity=".22" stroke="#f472b6"/>
+<text x="822.0" y="153" font-size="11.5" fill="#e2e8f0" text-anchor="middle">private endpoints</text>
+<rect x="730" y="170" width="184" height="26" rx="13" fill="#f472b6" opacity=".22" stroke="#f472b6"/>
+<text x="822.0" y="187" font-size="11.5" fill="#e2e8f0" text-anchor="middle">identities + rollen</text>
+<text x="330" y="267" font-size="13" fill="#fbbf24" font-weight="bold">Data</text>
+<rect x="330" y="277" width="184" height="26" rx="13" fill="#fbbf24" opacity=".22" stroke="#fbbf24"/>
+<text x="422.0" y="294" font-size="11.5" fill="#e2e8f0" text-anchor="middle">PostgreSQL</text>
+<rect x="330" y="311" width="184" height="26" rx="13" fill="#fbbf24" opacity=".22" stroke="#fbbf24"/>
+<text x="422.0" y="328" font-size="11.5" fill="#e2e8f0" text-anchor="middle">Service Bus</text>
+<rect x="330" y="345" width="184" height="26" rx="13" fill="#fbbf24" opacity=".22" stroke="#fbbf24"/>
+<text x="422.0" y="362" font-size="11.5" fill="#e2e8f0" text-anchor="middle">Storage account</text>
+<text x="530" y="267" font-size="13" fill="#f87171" font-weight="bold">Beveiliging</text>
+<rect x="530" y="277" width="184" height="26" rx="13" fill="#f87171" opacity=".22" stroke="#f87171"/>
+<text x="622.0" y="294" font-size="11.5" fill="#e2e8f0" text-anchor="middle">key vault</text>
+<rect x="530" y="311" width="184" height="26" rx="13" fill="#f87171" opacity=".22" stroke="#f87171"/>
+<text x="622.0" y="328" font-size="11.5" fill="#e2e8f0" text-anchor="middle">role assignments</text>
+<rect x="530" y="345" width="184" height="26" rx="13" fill="#f87171" opacity=".22" stroke="#f87171"/>
+<text x="622.0" y="362" font-size="11.5" fill="#e2e8f0" text-anchor="middle">managed identity</text>
+<text x="730" y="267" font-size="13" fill="#a3e635" font-weight="bold">Zicht</text>
+<rect x="730" y="277" width="184" height="26" rx="13" fill="#a3e635" opacity=".22" stroke="#a3e635"/>
+<text x="822.0" y="294" font-size="11.5" fill="#e2e8f0" text-anchor="middle">Grafana-stack</text>
+<rect x="730" y="311" width="184" height="26" rx="13" fill="#a3e635" opacity=".22" stroke="#a3e635"/>
+<text x="822.0" y="328" font-size="11.5" fill="#e2e8f0" text-anchor="middle">Application Insights</text>
+<rect x="730" y="345" width="184" height="26" rx="13" fill="#a3e635" opacity=".22" stroke="#a3e635"/>
+<text x="822.0" y="362" font-size="11.5" fill="#e2e8f0" text-anchor="middle">alerts</text>
+<text x="330" y="455" font-size="12" fill="#cbd5e1">env-test / env-int / env-prod .tfvars: dezelfde code, andere waarden</text>
+<text x="330" y="478" font-size="12" fill="#cbd5e1">config/: nginx en service-configuratie per omgeving</text>
+</svg>

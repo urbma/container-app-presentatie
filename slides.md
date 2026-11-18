@@ -562,6 +562,45 @@ VNet en subnet: Een VNet is een eigen privé-netwerk. Subnets verdelen dat netwe
 
 ---
 
+# Het Manage Portal: de voordeur voor je netwerk
+
+<div class="w-[40%] text-base">
+
+- **Network**: een VNet en subnets aanvragen
+- **Private Endpoint** en **DNS**: endpoints en DNS-zones onboarden, records aanvragen
+- **Technical Identities**: service principals voor je pipeline
+- **ITSM Ticket**: voor alles wat via een service request moet
+- **Cloudrooms**: bij ons vier omgevingen: TEST, INT, PROD en Shared
+
+</div>
+
+<img src="/manage-portal.png" class="absolute right-8 bottom-8 w-[34rem] rounded-xl shadow-xl" />
+
+<!--
+Het BMW Manage Portal (manage.azure.bmw.cloud) is het zelfservice-portaal voor het Azure-platform. Wat je in een gewone Azure-omgeving zelf in de Azure Portal doet, loopt hier via het BMW-portaal: een VNet en subnets aanvragen, private endpoints en DNS-zones onboarden, DNS-records aanvragen, technical identities (service principals) aanmaken en ITSM-tickets openen. Linksboven in het menu staan Network, DNS, Private Endpoint, Technical Identities en ITSM Ticket. Op het dashboard zie je onze cloudrooms: TEST, INT, PROD en Shared, elk met status, Secure Score en billing. Reden voor dit hoofdstuk: een deel van de infrastructuur kun je niet met Terraform regelen, maar moet je hier klikken of aanvragen.
+-->
+
+---
+
+# De Azure Portal: hier zie je wat er echt draait
+
+<div class="w-[40%] text-base">
+
+- **Resources**: NSG's, private endpoints, Service Bus, container apps, Front Door en de Log Analytics workspace, op één plek
+- **Kijken en debuggen**: log stream, revisions, NSG-regels en instellingen bekijken
+- **Goedkeuren**: private endpoint-verbindingen van Front Door en de registry keur je hier goed
+- **Aanmaken** doen we niet hier maar in Terraform
+
+</div>
+
+<img src="/azure-portal.png" class="absolute right-8 bottom-8 w-[34rem] rounded-xl shadow-xl" />
+
+<!--
+De Azure Portal (portal.azure.com) is de gewone beheerinterface van Azure, naast het BMW Manage Portal van de vorige slide. Het Manage Portal gebruik je om dingen aan te vragen die het platformteam regelt (VNet, DNS, endpoints). De Azure Portal gebruik je om te zien wat er daadwerkelijk draait: op het startscherm staan onder Recent onze NSG, de container registry, het private endpoint en de Service Bus, de container apps (portal-service, external-notification-service), de Log Analytics workspace en Front Door met de WAF-policy. Voor ons is het vooral een kijk- en debugplek: log stream, revisions, NSG-regels. Bij het opzetten moesten we ook private endpoint-verbindingen goedkeuren (Front Door naar de environment, de registry voor de web app), anders geeft Front Door een 502. Resources maken we liever aan met Terraform dan met klikken.
+-->
+
+---
+
 # Hub en spoke: ons VNet is geen eiland
 
 <div class="w-[52%] text-base">
@@ -743,6 +782,19 @@ Ingress: Twee lagen. De environment bepaalt of er een internal of publieke load 
 
 <!--
 Heen en weer: Niet alles kan in code. Het VNet, de service principal (met JIT Owner-rol) en de DNS-zones lopen via het BMW Manage Portal. Terraform doet de rest, maar halverwege de apply moeten private DNS zones en private endpoint-records weer handmatig in het portal. Het ging dus een paar keer heen en weer.
+-->
+
+---
+layout: center
+class: text-center
+---
+
+# Onze infra-repo: wat staat erin?
+
+<img src="/infra-repo.svg" class="mx-auto mt-4 h-[26rem] rounded-xl shadow-xl" />
+
+<!--
+De infra-repo bestaat uit drie delen. Deployment: een Jenkins-pipeline per omgeving (TEST, INT, PROD) plus één voor de gedeelde onderdelen. azure-terraform-shared: wat alle omgevingen delen, zoals de container registry, een key vault, een Log Analytics workspace en alerts. azure-terraform-environments: één codebase voor alle omgevingen met rond de 4600 regels Terraform, opgedeeld per onderwerp (netwerk, container apps, Front Door, data, beveiliging, monitoring). Per omgeving verschilt alleen het tfvars-bestand en de map config/ met nginx- en service-configuratie. Het README beschrijft de hele opzet in stappen, inclusief de handmatige stappen in het Manage Portal en Tufin.
 -->
 
 ---

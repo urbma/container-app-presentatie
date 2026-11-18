@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" font-family="Helvetica, Arial, sans-serif">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#1c1626"/><stop offset="0.38" stop-color="#121a36"/>
+<stop offset="0.62" stop-color="#0d2a3c"/><stop offset="1" stop-color="#0d3f4a"/>
+</linearGradient>
+<radialGradient id="sun" cx="0.88" cy="0.2" r="0.3"><stop offset="0" stop-color="#ffe9a8" stop-opacity="0.5"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/></radialGradient>
+<radialGradient id="fire" cx="0.1" cy="0.8" r="0.3"><stop offset="0" stop-color="#ff6a3d" stop-opacity="0.35"/><stop offset="1" stop-color="#ff6a3d" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1920" height="1080" fill="url(#bg)"/>
+
+<!-- ============ AKS: paniek ============ -->
+<g opacity="0.4" stroke="#ffffff" stroke-opacity="0.8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+
+<line x1="60" y1="1000" x2="820" y2="1000" stroke-opacity="0.3"/>
+
+<!-- stapel nodes, de bovenste staat in brand -->
+<g stroke="#ff8a6b" stroke-width="6">
+<rect x="110" y="920" width="170" height="80" rx="8" fill="#ff8a6b" fill-opacity="0.2"/>
+<rect x="120" y="840" width="150" height="80" rx="8" fill="#ff8a6b" fill-opacity="0.2" transform="rotate(-4 195 880)"/>
+<rect x="135" y="760" width="130" height="80" rx="8" fill="#ff8a6b" fill-opacity="0.2" transform="rotate(7 200 800)"/>
+<circle cx="150" cy="960" r="7"/><circle cx="150" cy="880" r="7"/><circle cx="165" cy="800" r="7"/>
+</g>
+<path d="M200,760 C170,720 215,705 195,660 C240,690 260,725 235,760 C250,745 262,755 255,770 Z" fill="#ff9a3d" fill-opacity="0.85" stroke="#ffd36b" stroke-width="5"/>
+
+
+<!-- gestreste man -->
+<circle cx="520" cy="770" r="44" fill="#2a1620"/>
+<path d="M486,735 l-12,-30 M506,727 l-4,-34 M530,726 l8,-34 M552,736 l20,-28" stroke-width="6"/>
+<circle cx="505" cy="764" r="9" stroke-width="5"/><circle cx="537" cy="764" r="9" stroke-width="5"/>
+<ellipse cx="521" cy="792" rx="9" ry="12" stroke-width="5"/>
+<line x1="520" y1="814" x2="520" y2="920"/>
+<line x1="520" y1="920" x2="475" y2="1000"/><line x1="520" y1="920" x2="575" y2="1000"/>
+<line x1="520" y1="840" x2="440" y2="770"/><line x1="520" y1="840" x2="610" y2="780"/>
+<!-- moersleutel -->
+<line x1="440" y1="770" x2="420" y2="725" stroke-width="9"/>
+<circle cx="418" cy="715" r="18" stroke-width="7"/>
+
+</g>
+
+<!-- ============ ACA: relaxen ============ -->
+<g opacity="0.4" stroke="#ffffff" stroke-opacity="0.85" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+
+<line x1="1100" y1="1000" x2="1860" y2="1000" stroke-opacity="0.3"/>
+
+<!-- ligstoel -->
+<path d="M1160,935 L1400,975 M1160,935 L1140,870 M1230,950 L1210,1000 M1380,972 L1390,1000" stroke="#6ff0dc" stroke-width="8"/>
+<!-- man -->
+<circle cx="1215" cy="855" r="42" fill="#0d2a3c"/>
+<path d="M1190,846 h56" stroke-width="12"/><path d="M1190,840 h56 v14 h-56 z" fill="#0b1c28" stroke-width="5"/>
+<path d="M1196,876 q20,18 40,0" stroke-width="6"/>
+<path d="M1255,890 L1370,945 L1480,955" />
+<path d="M1370,945 L1440,905 L1500,925"/>
+<!-- cocktail -->
+<path d="M1290,845 h54 l-27,38 z" fill="#ff9ad0" fill-opacity="0.8" stroke="#ff9ad0" stroke-width="5"/>
+<line x1="1317" y1="883" x2="1317" y2="912" stroke-width="5"/><line x1="1303" y1="912" x2="1331" y2="912" stroke-width="5"/>
+<line x1="1330" y1="845" x2="1345" y2="815" stroke="#ffe27a" stroke-width="5"/>
+<path d="M1262,886 L1300,860" stroke-width="6"/>
+
+
+<!-- parasol -->
+<line x1="1575" y1="1000" x2="1575" y2="780" stroke-width="8"/>
+<path d="M1475,800 a100,80 0 0 1 200,0 z" fill="#6ff0dc" fill-opacity="0.4" stroke="#6ff0dc"/>
+
+<!-- één kleine container-app -->
+<g stroke="#6ff0dc" stroke-width="7">
+<rect x="1670" y="920" width="150" height="80" rx="10" fill="#6ff0dc" fill-opacity="0.3"/>
+<line x1="1670" y1="950" x2="1820" y2="950" stroke-width="5"/>
+</g>
+
+</g>
+
+<!-- labels -->
+<g font-weight="800" font-size="80" opacity="0.6">
+<text x="110" y="610" fill="#ff8a6b">AKS</text>
+<text x="1850" y="610" fill="#6ff0dc" text-anchor="end">ACA</text>
+</g>
+</svg>
